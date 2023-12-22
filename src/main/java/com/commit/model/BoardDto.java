@@ -34,4 +34,7 @@ public class BoardDto {
 	private int report; //신고수
 	@Column(name = "MEMBER_ID")
 	private Integer memberId; //fk연결
+	@Column(name = "BOARDFILE_ID")
+	private Integer boardFIleId; //fk연결
+
 }
