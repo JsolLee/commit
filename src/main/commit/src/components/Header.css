@@ -1,0 +1,44 @@
+.main-menu{
+    font-size: 16px;
+}
+.main-menu a {
+    font-weight: bold;
+    text-decoration: none;
+}
+.sub-menu {
+    display: flex;
+    position: absolute;
+    /*서브 메뉴를 절대위치로 설정하여 부모요소로부터 독립*/
+    top: 100%;
+    /* 부모 요소의 하단에 서브메뉴 배치*/
+    width: 100%;
+    left: 0;
+    margin-left: 13%;
+    padding: 10px;
+    list-style-type: none;
+    z-index: 10;
+    
+}
+.sub-menu a{
+    text-decoration: none;
+}
+.sub-menu li {
+    padding : 0 10px;
+    margin-bottom: 5px;
+
+}
+.sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .sub-menu {
+        position: static;
+        margin-left: 0;
+        flex-direction: column; /*세로로*/
+    }
+
+    .main-menu li:hover .sub-menu {
+        display: block;
+    }
+}
