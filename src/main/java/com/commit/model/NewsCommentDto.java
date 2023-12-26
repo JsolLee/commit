@@ -9,16 +9,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BoardFileDto {
+public class NewsCommentDto {
 	private Integer id;
-	private Integer boardId;
 	private Integer membersId;
-	private String originName;
-	private String dir;
-	private String name;
-	private String type;
-	private Integer size;
+	private Integer newsId; 
+	private Integer parentId;
+	private String content;
 	private Timestamp createDate;
 	private Timestamp updateDate;
+	private Timestamp deleteDate;
+	private String deleteYN;
 	
 }

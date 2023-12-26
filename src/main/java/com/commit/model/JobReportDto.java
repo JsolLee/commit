@@ -9,17 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BoardDto {
+public class JobReportDto {
 	private Integer id;
-	private Integer membersId;
-	private Integer boardFIleId; 
-	private String category;
-	private String title;
+	private Integer membersId; //신고한 사람
+	private Integer jobId; 
 	private String content;
-	private Integer viewcount;
-	private Integer likecount;
 	private Timestamp createDate;
-	private Timestamp updateDate;
-	private String deleteYN; 
-
+	private Timestamp deleteDate;
+	private String deleteYN;
 }

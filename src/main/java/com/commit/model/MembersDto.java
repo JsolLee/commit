@@ -9,16 +9,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BoardFileDto {
+public class MembersDto {
 	private Integer id;
-	private Integer boardId;
-	private Integer membersId;
-	private String originName;
-	private String dir;
-	private String name;
-	private String type;
-	private Integer size;
+	private String role;
+	private String memberId;
+	private String memberPw;
+	private String email;
+	private String nickName;
 	private Timestamp createDate;
 	private Timestamp updateDate;
+	private String memberOut;
 	
 }
