@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
 @Table(name="boardcomment")
 public class BoardComment {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "BOARDCOMMENT_ID")
 	private Integer id;
 	@Column(name = "MEMBERS_ID")

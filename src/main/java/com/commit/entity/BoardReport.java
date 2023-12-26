@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @Table(name="boardreport")
 public class BoardReport {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "BOARDREPORT_ID")
 	private Integer id;
 	@Column(name = "MEMBERS_ID")

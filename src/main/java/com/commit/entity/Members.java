@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
 @Table(name="members")
 public class Members {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "MEMBERS_ID") // 컬럼명을 새로 만들어 준다.
 	private Integer id;
 	private String role;

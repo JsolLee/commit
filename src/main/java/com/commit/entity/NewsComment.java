@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
 @Table(name="newscomment")
 public class NewsComment {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "NEWSCOMMENT_ID")
 	private Integer id;
 	@Column(name = "MEMBERS_ID")

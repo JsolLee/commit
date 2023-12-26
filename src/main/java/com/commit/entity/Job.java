@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @Table(name="job")
 public class Job {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "JOB_ID")
 	private Integer id;
 	private String title;

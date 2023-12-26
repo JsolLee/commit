@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @Table(name="commentreport")
 public class CommentReport {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "COMMENTREPORT_ID")
 	private Integer id;
 	@Column(name = "MEMBERS_ID")
