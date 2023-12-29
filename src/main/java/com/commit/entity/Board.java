@@ -11,12 +11,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
+@Data
 @Entity
-@NoArgsConstructor()
+@NoArgsConstructor
 @Table(name="board")
 public class Board {
 	@Id
