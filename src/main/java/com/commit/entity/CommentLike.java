@@ -25,5 +25,5 @@ public class CommentLike {
 	private Integer newsCommentId;
 	@Column(name = "BOARDCOMMENT_ID", nullable=true)
 	private Integer boardCommentId;
-	
+
 }

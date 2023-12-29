@@ -1,8 +1,26 @@
 package com.commit.controller;
 
-import org.springframework.stereotype.Controller;
+import java.util.ArrayList;
 
-@Controller
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.commit.entity.Job;
+import com.commit.service.JobService;
+
+@RestController
 public class JobController {
+	@Autowired
+	private JobService jobService;
 
+	@GetMapping("/Job")
+	public ArrayList<Job> list() {
+		// 크롤링 한 데이터 DB에 집어넣기
+		//jobService.getData();
+
+		// DB에 있는 데이터 조회
+		ArrayList<Job> list = (ArrayList<Job>) jobService.getAllJobs();
+		return list;
+	}
 }
