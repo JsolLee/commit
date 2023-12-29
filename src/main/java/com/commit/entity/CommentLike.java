@@ -22,8 +22,8 @@ public class CommentLike {
 	@Column(name = "MEMBERS_ID")
 	private Integer membersId;
 	@Column(name = "NEWSCOMMENT_ID", nullable=true)
-	private Integer newscommentId;
+	private Integer newsCommentId;
 	@Column(name = "BOARDCOMMENT_ID", nullable=true)
-	private Integer boardcommentId;
+	private Integer boardCommentId;
 	
 }

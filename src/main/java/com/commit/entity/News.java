@@ -27,7 +27,7 @@ public class News {
 	private String title;
 	private String subtitle;
 	private String content; // 뉴스 기사 데이터
-	private String orgin; // 출처
+	private String origin; // 출처
 	@Column(nullable = true)
 	private String image;
 	private String writer; //뉴스 작성자
