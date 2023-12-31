@@ -15,9 +15,7 @@ public class JobController {
 	private JobService jobService;
 
 	@GetMapping("/Job")
-	public ArrayList<Job> list() {
-		// 크롤링 한 데이터 DB에 집어넣기
-		//jobService.getData();
+	public ArrayList<Job> list(Job job) {
 
 		// DB에 있는 데이터 조회
 		ArrayList<Job> list = (ArrayList<Job>) jobService.getAllJobs();
