@@ -35,4 +35,5 @@ public class Members {
 	@Column(nullable = true)
 	private Timestamp updateDate;
 	private String memberOut;
+	
 }
