@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.commit.entity.Job;
@@ -14,11 +17,13 @@ import com.commit.repository.JobDao;
 public class JobService {
     @Autowired
     private JobDao jobDao;
-
-    public List<Job> getAllJobs() {
-        List<Job> list = jobDao.findAll();
-        return list;
-    }
+	
+	// 페이지 시작 : 0, 한 페이지에 보여줄 개수 : 10
+	Pageable pageable = PageRequest.of(0, 10);
+	
+	public Page<Job> getPages(Pageable pageable) {
+		return jobDao.findAll(pageable);
+	}
 
     // 채용 가져오기 : id로 가져오기
     public JobDto getJobById(Integer id) {
@@ -34,6 +39,7 @@ public class JobService {
                 .title(job.getTitle())
                 .career(job.getCareer())
                 .degree(job.getDegree())
+                .companyname(job.getCompanyname())
                 .location(job.getLocation())
                 .image(job.getImage())
                 .viewcount(job.getViewcount())
@@ -41,5 +47,4 @@ public class JobService {
                 .finishDate(job.getFinishDate_D())
                 .build();
     }
-
 }
