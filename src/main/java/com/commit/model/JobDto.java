@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class JobDto {
 	private Integer id;
 	private String title;
-	private String content;
 	private String career;
 	private String degree; 
 	private String companyname; 
