@@ -3,14 +3,12 @@ package com.commit.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.commit.entity.Job;
 import com.commit.model.JobDto;
-import com.commit.model.NewsDto;
 import com.commit.service.JobService;
 
 @RestController

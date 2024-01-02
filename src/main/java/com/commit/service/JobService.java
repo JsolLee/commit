@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.commit.entity.Job;
-import com.commit.entity.News;
 import com.commit.model.JobDto;
-import com.commit.model.NewsDto;
 import com.commit.repository.JobDao;
 
 @Service

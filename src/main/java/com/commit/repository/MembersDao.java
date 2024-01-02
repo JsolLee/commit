@@ -7,5 +7,5 @@ import com.commit.entity.Members;
 
 @Repository
 public interface MembersDao extends JpaRepository<Members, Integer>{
-	//public Members findByUsername(String username);
+	
 }

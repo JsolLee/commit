@@ -5,19 +5,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class SecurityConfig {
-	/* 자동으로 주입받을 수 있게끔 -> BCryptPasswordEncoder : 패스워드를 암호화해주는
+public class SecurityConfig{
+	
 	@Bean
 	public BCryptPasswordEncoder encodePwd() {
-		// 객체를주입받을수있게준비를해둠
 		return new BCryptPasswordEncoder();
 	}
-	 */
+	
 	// 접속하는 사용자들이 걸러주는것
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -33,10 +33,10 @@ public class SecurityConfig {
 			)
 			*/
 			http.authorizeHttpRequests(requests -> 
-			requests.anyRequest().permitAll() //누구나 다 접근할 수 있게 하겠다.
+				requests.anyRequest().permitAll() //누구나 다 접근할 수 있게 하겠다.
 				)	
 			.formLogin(login -> 
-				login.loginPage("/loginForm")
+				login.loginPage("/login")
 				.loginProcessingUrl("/login")
 				.defaultSuccessUrl("/")
 			)
