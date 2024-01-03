@@ -1,7 +1,11 @@
 package com.commit.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import com.commit.entity.News;
 import com.commit.model.NewsDto;
 import com.commit.repository.NewsDao;
@@ -15,7 +19,28 @@ public class NewsService {
 
     @Autowired
     private NewsDao newsDao;
+    
+    // 페이지네이션
+    Pageable pageable = PageRequest.of(0, 10);
+	public Page<News> getPages(Pageable pageable) {
+		return newsDao.findAll(pageable);
+	}
 
+	// NewsList
+	// 카테고리별로 가져오기
+    public List<NewsDto> getNewsByCategory(String category) {
+        return newsDao.findByCategoryOrderByCreateDateDesc(category).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+    
+    // 카테고리 메인뉴스 가져오기
+    public NewsDto getTopLikedAndViewedNews() {
+        News news = newsDao.findFirstByOrderByLikecountDescViewcountDesc();
+        return news != null ? convertToDto(news) : null;
+    }
+	
+    //NewsView
     // 뉴스 가져오기 : id로 가져오기
     public NewsDto getNewsById(Integer id) {
         Optional<News> news = newsDao.findById(id);
