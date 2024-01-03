@@ -47,8 +47,11 @@ public class BoardDto {
         return Board.builder()
                 .title(this.title)
                 .content(this.content)
+                .category(this.category)
                 .membersId(this.membersId)
                 .createDate(this.createDate)
+                .updateDate(this.updateDate)
+                .deleteYN(this.deleteYN)
                 .build();
     }
 }

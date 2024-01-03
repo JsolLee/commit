@@ -59,12 +59,23 @@ public class BoardService {
 		  Optional<Board> boardWrapper = boardDao.findById(id);
 		  Board board = boardWrapper.get();
 		  
+		  	// 조회수 증가 메서드
+		    if (board.getViewcount() == null) {
+		        board.setViewcount(0);
+		    }
+		    board.setViewcount(board.getViewcount() + 1);
+		    boardDao.save(board);
+		  
 		  BoardDto boardDto = BoardDto.builder()
 				  .id(board.getId())
 				  .title(board.getTitle())
 				  .content(board.getContent())
+				  .category(board.getCategory())
 				  .membersId(board.getMembersId())
 				  .createDate(board.getCreateDate())
+				  .updateDate(board.getUpdateDate())
+				  .viewcount(board.getViewcount())
+				  .deleteYN(board.getDeleteYN())
 				  .build();
 		  
 		  return boardDto;
