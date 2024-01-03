@@ -1,6 +1,5 @@
 package com.commit.service;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,11 +16,11 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class BoardService {
-	
-	 private final BoardDao boardDao;
-	 private final MembersDao memberDao;
-
-	    @Autowired
+	@Autowired
+	private final BoardDao boardDao;
+	@Autowired
+	private final MembersDao memberDao;
+	    
 	    public BoardService(BoardDao boardDao, MembersDao memberDao) {
 	        this.boardDao = boardDao;
 	        this.memberDao = memberDao;
