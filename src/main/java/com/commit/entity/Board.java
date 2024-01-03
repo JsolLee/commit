@@ -39,7 +39,7 @@ public class Board {
 	@CreatedDate
 	private Timestamp createDate;
 	@LastModifiedDate
-	@Column(nullable = true)
+	@Column(nullable = true, insertable = false)
 	private Timestamp updateDate;
 	private String deleteYN; //삭제 여부
 }

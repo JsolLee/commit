@@ -36,7 +36,7 @@ public class NewsComment {
 	@CreatedDate
 	private Timestamp createDate;
 	@LastModifiedDate
-	@Column(nullable=true)
+	@Column(nullable=true, insertable = false)
 	private Timestamp updateDate;
 	@Column(nullable=true)
 	private Timestamp deleteDate;
