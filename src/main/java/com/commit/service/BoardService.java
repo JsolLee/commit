@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.commit.entity.Board;
@@ -29,8 +26,40 @@ public class BoardService {
 	        this.memberDao = memberDao;
 	    }
 	    
-	   public List<Board> getAllBoard() {
-		   return boardDao.findAll();
+	   public List<Board> getBoard() {
+		   List<Board> mainList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("main");
+		   List<Board> joinList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("join");
+		   List<Board> psList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("ps");
+		   List<Board> adviceList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("advice");
+		   List<Board> jobList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("job");
+		   List<Board> etcList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("etc");
+		   
+		   List<Board> allBoardList = new ArrayList<>();
+		   allBoardList.addAll(mainList);
+		   allBoardList.addAll(joinList);
+		   allBoardList.addAll(psList);
+		   allBoardList.addAll(adviceList);
+		   allBoardList.addAll(jobList);
+		   allBoardList.addAll(etcList);
+		   
+		   return allBoardList;
+	   }
+	   
+	   // 비상용
+	   private BoardDto convertToDto(Board board) {
+		   return BoardDto.builder()
+				   .boardFIleId(board.getBoardFIleId())
+				   .id(board.getId())
+				   .membersId(board.getMembersId())
+				   .likecount(board.getLikecount())
+				   .viewcount(board.getViewcount())
+				   .createDate(board.getCreateDate())
+				   .updateDate(board.getUpdateDate())
+				   .category(board.getCategory())
+				   .content(board.getContent())
+				   .deleteYN(board.getDeleteYN())
+				   .title(board.getTitle())
+				   .build();
 	   }
 	    
 	   //게시판 글 작성 메서드

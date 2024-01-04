@@ -28,7 +28,7 @@ public class BoardController {
     
     @GetMapping("/community")
     public List<Board> getBoard(){
-    	List<Board> result = boardService.getAllBoard();
+    	List<Board> result = boardService.getBoard();
     	return result;
     }
     
