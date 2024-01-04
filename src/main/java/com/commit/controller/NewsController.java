@@ -35,11 +35,15 @@ public class NewsController {
     @GetMapping("/news/category/{category}")
     public ResponseEntity<Map<String, Object>> getNewsByCategory(@PathVariable(name = "category") String category) {
         List<NewsDto> newsList = newsService.getNewsByCategory(category);
-        NewsDto topLikedAndViewedNews = newsService.getTopLikedAndViewedNews();
+        NewsDto topNews = newsService.getTopNewsByCategory(category);
+        List<NewsDto> popularNews = newsService.getPopularNews();
+        List<NewsDto> latestNews = newsService.getLatestNews();
 
         Map<String, Object> response = new HashMap<>();
         response.put("listNews", newsList);
-        response.put("topNews", topLikedAndViewedNews);
+        response.put("topNews", topNews);
+        response.put("popularNews", popularNews);
+        response.put("latestNews", latestNews);
 
         return ResponseEntity.ok(response);
     }

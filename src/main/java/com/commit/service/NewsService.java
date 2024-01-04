@@ -35,9 +35,9 @@ public class NewsService {
     }
     
     // 카테고리 메인뉴스 가져오기
-    public NewsDto getTopLikedAndViewedNews() {
-        News news = newsDao.findFirstByOrderByLikecountDescViewcountDesc();
-        return news != null ? convertToDto(news) : null;
+    public NewsDto getTopNewsByCategory(String category) {
+        Page<News> newsPage = newsDao.findTopByCategoryOrderByLikecountDescViewcountDesc(category, PageRequest.of(0, 1));
+        return newsPage.hasContent() ? convertToDto(newsPage.getContent().get(0)) : null;
     }
 	
     //NewsView
