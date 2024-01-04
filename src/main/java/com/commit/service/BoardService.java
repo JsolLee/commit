@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.commit.entity.Board;
@@ -25,6 +28,10 @@ public class BoardService {
 	        this.boardDao = boardDao;
 	        this.memberDao = memberDao;
 	    }
+	    
+	   public List<Board> getAllBoard() {
+		   return boardDao.findAll();
+	   }
 	    
 	   //게시판 글 작성 메서드
 	   @Transactional
