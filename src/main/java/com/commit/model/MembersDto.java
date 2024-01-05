@@ -21,5 +21,4 @@ public class MembersDto {
 	private Timestamp createDate;
 	private Timestamp updateDate;
 	private String memberOut;
-	
 }

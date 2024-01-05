@@ -3,7 +3,6 @@ package com.commit.entity;
 import java.sql.Timestamp;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.Column;
@@ -13,31 +12,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
+@Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
-@Table(name="members")
-public class Members {
+@AllArgsConstructor
+@Table(name="LoginHistory")
+public class LoginHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "MEMBERS_ID") // 컬럼명을 새로 만들어 준다.
+	@Column(name = "LOGINHISTORY_ID")
 	private Integer id;
-	private String role;
+	@Column(name = "MEMBER_ID")
 	private String memberId;
-	private String memberPw;
-	private String email;
-	private String nickName;
 	@CreatedDate
 	private Timestamp createDate;
-	@LastModifiedDate
-	@Column(nullable = true, insertable = false)
-	private Timestamp updateDate;
-	private String memberOut;
-	
 }
-

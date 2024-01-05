@@ -8,16 +8,30 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.commit.auth.MemberAuthenticationSuccessHandler;
+import com.commit.service.HistoryService;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig{
+	
+	private final HistoryService historyService;
+	
+	public SecurityConfig(HistoryService historyService) {
+		this.historyService = historyService;
+	}
 	
 	@Bean
 	public BCryptPasswordEncoder encodePwd() {
 		return new BCryptPasswordEncoder();
 	}
 	
+	// 로그인 성공시 동작하는 UserAuthenticationSuccessHandler 핸들러 추가
+    @Bean
+    MemberAuthenticationSuccessHandler getSuccessHandler() {
+        return new MemberAuthenticationSuccessHandler(historyService);
+    }
 	// 접속하는 사용자들이 걸러주는것
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -36,13 +50,18 @@ public class SecurityConfig{
 				requests.anyRequest().permitAll() //누구나 다 접근할 수 있게 하겠다.
 				)	
 			.formLogin(login -> 
-				login.loginPage("/login")
+				login
+				.usernameParameter("memberId")
+				.passwordParameter("memberPw")
+				.loginPage("/login")
 				.loginProcessingUrl("/login")
+				.successHandler(getSuccessHandler())
 				.defaultSuccessUrl("/")
+				.failureUrl("/login")
 			)
 			.logout(logout ->
 				logout.logoutSuccessUrl("/")
-				.invalidateHttpSession(true)
+				.invalidateHttpSession(true).deleteCookies("JSESSIONID")
 			)
 			.csrf(csrf -> csrf.disable())
 			.cors(cors -> cors.disable());
