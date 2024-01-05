@@ -68,25 +68,21 @@ public class BoardService {
 		   return boardDao.save(boardDto.toEntity()).getId();
 	   }
 	   
-	   //게시판 글 목록 조회 메서드
-	   @Transactional
-	   public List<BoardDto> getBoardList(){
-		   List<Board> boards = boardDao.findAll();
-		   List<BoardDto> boardDtoList = new ArrayList<>();
-		   
-		   for(Board board : boards) {
-			   BoardDto boardDto = BoardDto.builder()
-					   .id(board.getId())
-					   .title(board.getTitle())
-					   .content(board.getContent())
-					   .membersId(board.getMembersId())
-					   .createDate(board.getCreateDate())
-					   .build();
-			   
-			   boardDtoList.add(boardDto);
-		   }
-		   return boardDtoList;		   
-	  }
+	   // 게시판 글 목록 조회 메서드
+	    @Transactional
+	    public Page<BoardDto> getBoardList(Pageable pageable){
+	        Page<Board> boards = boardDao.findAll(pageable);
+	        Page<BoardDto> boardDtoList = boards.map(board -> BoardDto.builder()
+	                .id(board.getId())
+	                .title(board.getTitle())
+	                .content(board.getContent())
+	                .membersId(board.getMembersId())
+	                .createDate(board.getCreateDate())
+	                .viewcount(board.getViewcount())
+	                .build());
+
+	        return boardDtoList;           
+	    }
 	   
 	  //게시판 글 상세 조회 메서드
 	  @Transactional

@@ -34,7 +34,7 @@ public class BoardController {
     
     
     //글 쓰기 요청
-    @PostMapping("/boardwrite")
+    @PostMapping("/Community/boardwrite")
     public ResponseEntity<Integer> boardWrite(@RequestBody BoardDto boardDto) {
         try {
             Integer createdBoardId = boardService.boardWrite(boardDto);
@@ -45,32 +45,33 @@ public class BoardController {
     }
     
     //글 목록 조회 요청
-    @GetMapping("/boardlist")
-    public List<BoardDto> list() {
-        return boardService.getBoardList();
+    @GetMapping("/Community/boardlist")
+    public Page<BoardDto> list(@RequestParam(name = "page", defaultValue = "1") int page) {
+        Pageable pageable = PageRequest.of(page - 1, 10, Sort.by(Direction.ASC, "id"));
+        return boardService.getBoardList(pageable);
     }
     
     //글 상세 페이지 요청
-    @GetMapping("/boarddetail/{id}")
+    @GetMapping("/Community/boarddetail/{id}")
     public BoardDto detail(@PathVariable("id") Integer id) {
         return boardService.getBoard(id);
     }
     
     //글 삭제 요청
-    @DeleteMapping("/boarddetail/{id}")
+    @DeleteMapping("/Community/boarddetail/{id}")
     public void delete(@PathVariable("id") Integer id) {
         boardService.boarddelete(id);
     }
     
     // 글 수정 페이지 가져오기
-    @GetMapping("/boardedit/{id}")
+    @GetMapping("/Community/boardedit/{id}")
     public ResponseEntity<BoardDto> showboardedit(@PathVariable("id") Integer id) {
         BoardDto boardDto = boardService.getBoard(id);
         return ResponseEntity.ok(boardDto);
     }
 
     // 글 수정 요청 처리
-    @PostMapping("/boardedit/{id}")
+    @PostMapping("/Community/boardedit/{id}")
     public ResponseEntity<Void> boardedit(@PathVariable("id") Integer id, @RequestBody BoardDto updatedBoardDto) {
         boardService.boardedit(id, updatedBoardDto);
         return ResponseEntity.ok().build();
