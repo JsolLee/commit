@@ -26,7 +26,8 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
     
-    @GetMapping("/news")// 페이지네이션 컨트롤러 
+    // 페이지네이션 컨트롤러 
+    @GetMapping("/news")
     public Page<News> getNews(@PageableDefault(size=10, sort="id", direction = Sort.Direction.ASC) Pageable pageable){
     	Page<News> result = newsService.getPages(pageable);
     	return result;
@@ -49,7 +50,7 @@ public class NewsController {
     }
 
 
-    @GetMapping("/news/id/{id}")
+    @GetMapping("/news/article/{id}")
     public ResponseEntity<?> getNewsById(@PathVariable(name = "id") Integer id) {
         NewsDto newsView = newsService.getNewsById(id);
         List<NewsDto> popularNews = newsService.getPopularNews();
