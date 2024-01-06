@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.commit.entity.LoginHistory;
 import com.commit.entity.Members;
 import com.commit.model.MembersDto;
+import com.commit.service.HistoryService;
 import com.commit.service.MembersService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +29,9 @@ import jakarta.servlet.http.HttpSession;
 public class MemberController {
 	@Autowired
 	private MembersService membersService;
+	
+	@Autowired
+	private HistoryService historyService;
 
 	@GetMapping("/join")
 	public String join() {
@@ -41,7 +46,7 @@ public class MemberController {
 
 	@PostMapping("/Login")
 	public ResponseEntity<?> login(@RequestBody MembersDto membersDto, HttpSession session,
-			HttpServletRequest httpServletRequest) {
+			HttpServletRequest httpServletRequest, LoginHistory loginHistory) {
 
 		Optional<Members> members = membersService.findByMemberIdAndMemberPw(membersDto);
 		if (members == null) {
@@ -58,6 +63,7 @@ public class MemberController {
 //			System.out.println(members);
 
 			sessionList.put(session.getId(), session);
+//			historyService.saveLogOnLogin(loginHistory);
 		}
 		return ResponseEntity.ok(members);
 	}
@@ -73,13 +79,13 @@ public class MemberController {
 		}
 		System.out.println("2 :" + session.getId());
 		System.out.println("sessionList2 :" + sessionList);
-		// 로그아웃 후 리다이렉트할 URL을 지정합니다.
-		return ResponseEntity.ok(session);
+		
+		return ResponseEntity.ok().build();
 	}
 
 	// 세션 리스트 확인용 코드
 	public static Hashtable sessionList = new Hashtable();
-//
+
 	@GetMapping("/session-list")
 	@ResponseBody
 	public Map<String, String> sessionList() {
