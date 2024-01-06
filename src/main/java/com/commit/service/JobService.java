@@ -45,6 +45,12 @@ public class JobService {
                 .viewcount(job.getViewcount())
                 .createDate(job.getCreateDate())
                 .finishDate(job.getFinishDate_D())
+                .size(job.getSize())
+                .type(job.getType())
+                .salary(job.getSalary())
+                .page(job.getPage())
+                .location2(job.getLocation2())
+                .content(job.getContent())
                 .build();
     }
 }

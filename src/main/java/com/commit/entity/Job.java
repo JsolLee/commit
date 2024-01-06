@@ -34,6 +34,12 @@ public class Job {
 	private String image; // 채용 상세보기
 	private String finishDate_S; // 채용 공고 마감일(문자열 형식 : 채용시, 상시)	
 	private Integer viewcount; // 조회수
+	private String location2; // 지역 세부
+	private String type; // 고용 형태
+	private String page; // 홈페이지 주소
+	private String salary; // 급여
+	private String size; // 회사 규모
+	private String content; // 내용
 	@CreatedDate
 	private Timestamp createDate; // 채용 게시일(등록일) 마김-7
 	private Timestamp finishDate_D; // 채용 공고 마감일(날짜 형식)
