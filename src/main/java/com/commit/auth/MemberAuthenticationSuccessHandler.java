@@ -37,7 +37,7 @@ public class MemberAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 				.build();
 		
 		//히스토리 저장작업
-		historyService.saveLogOnLogin(loginHistory);
+		//historyService.saveLogOnLogin(loginHistory);
 		//회원 별 최종 로그인 날짜 업데이트 작업
 		super.onAuthenticationSuccess(request, response, authentication);
 	}

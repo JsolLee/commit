@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.commit.entity.LoginHistory;
 import com.commit.entity.Members;
@@ -23,7 +22,9 @@ import com.commit.service.MembersService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000")
 public class MemberController {
@@ -46,11 +47,11 @@ public class MemberController {
 
 	@PostMapping("/Login")
 	public ResponseEntity<?> login(@RequestBody MembersDto membersDto, HttpSession session,
-			HttpServletRequest httpServletRequest, LoginHistory loginHistory) {
+			HttpServletRequest httpServletRequest) {
 
 		Optional<Members> members = membersService.findByMemberIdAndMemberPw(membersDto);
 		if (members == null) {
-//			System.out.println(members);
+			// System.out.println(members);
 			session.setAttribute("msg", "Fail");
 			return ResponseEntity.badRequest().body(members);
 		} else {
@@ -60,10 +61,11 @@ public class MemberController {
 			session.setAttribute("memberId", members.get().getMemberId());
 			session.setMaxInactiveInterval(60 * 30); // 세션 유지 시간 30분으로 설정
 			System.out.println("session : " + session.getAttribute("memberId"));
-//			System.out.println(members);
+			// System.out.println(members);
 
 			sessionList.put(session.getId(), session);
-//			historyService.saveLogOnLogin(loginHistory);
+			
+			historyService.saveLogOnLogin("login", membersDto.getMemberId());
 		}
 		return ResponseEntity.ok(members);
 	}
@@ -71,14 +73,16 @@ public class MemberController {
 	@GetMapping("/Logout")
 	public ResponseEntity<?> logout(HttpSession session, HttpServletRequest request) {
 		session = request.getSession(false);
-		System.out.println("1 :" + session.getId());
-		System.out.println("sessionList1 :" + sessionList);
+		//System.out.println("1 :" + session.getId());
+		//System.out.println("sessionList1 :" + sessionList);
 		if(session != null) {
 			sessionList.remove(session.getId());
 			session.invalidate();
 		}
-		System.out.println("2 :" + session.getId());
-		System.out.println("sessionList2 :" + sessionList);
+		//System.out.println("2 :" + session.getId());
+		//System.out.println("sessionList2 :" + sessionList);
+		
+		historyService.saveLogOnLogin("logout", session.getId());
 		
 		return ResponseEntity.ok().build();
 	}

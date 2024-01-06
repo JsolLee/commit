@@ -56,8 +56,4 @@ public class MembersService {
         return null;
 	}
 	
-//	Optional<Members> findMemberByMemberId(String memberId) {
-//		
-//		return membersDao.findByMemberId(memberId);
-//	}
 }

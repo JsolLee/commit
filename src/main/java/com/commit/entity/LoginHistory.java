@@ -1,6 +1,7 @@
 package com.commit.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,10 +15,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
+@Data
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -33,4 +34,5 @@ public class LoginHistory {
 	private String memberId;
 	@CreatedDate
 	private Timestamp createDate;
+	private Date expireDate;
 }

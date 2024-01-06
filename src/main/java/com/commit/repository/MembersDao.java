@@ -10,6 +10,7 @@ import com.commit.entity.Members;
 @Repository
 public interface MembersDao extends JpaRepository<Members, Integer>{
 	   Optional<Members> findByMemberIdAndMemberPw(String memberId, String memberPw);
+	   
 	   public Members findByNickName(String nickName);
 
 	   // 멤버 아이디가 존재하는지
