@@ -23,10 +23,10 @@ public class MembersService {
     }
 	public void join(MembersDto membersDto) {
 		Members members = new Members();
-		System.out.println("service :" + membersDto);
+		//System.out.println("service :" + membersDto);
 		members.setRole("ROLE_USER");
 		members.setMemberId(membersDto.getMemberId());
-		System.out.println("service :" + membersDto.getMemberPw());
+		//System.out.println("service :" + membersDto.getMemberPw());
 		String rawPassword = membersDto.getMemberPw();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         //String password = bCryptPasswordEncoder.encode(membersDto.getMemberPw());

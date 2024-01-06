@@ -3,7 +3,9 @@ package com.commit.entity;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.Column;
@@ -34,5 +36,5 @@ public class LoginHistory {
 	private String memberId;
 	@CreatedDate
 	private Timestamp createDate;
-	private Date expireDate;
+	private Date expiredDate;
 }
