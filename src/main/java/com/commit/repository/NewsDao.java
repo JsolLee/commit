@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.commit.entity.News;
 
@@ -31,4 +33,10 @@ public interface NewsDao extends JpaRepository<News, Integer> {
 	
 	// 관련뉴스 : 같은 카테고리에서 최신순으로 6개 가져오기
     List<News> findTop6ByCategoryOrderByCreateDateDesc(String category);
+    
+    // 뉴스 조회수 증가
+    @Transactional
+    @Modifying
+    @Query("UPDATE News n SET n.viewcount = n.viewcount + 1 WHERE n.id = :id")
+    int incrementViewCount(@Param("id") Integer id);
 }

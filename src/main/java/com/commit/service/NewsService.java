@@ -29,61 +29,55 @@ public class NewsService {
 	// NewsList
 	// 카테고리별로 가져오기
     public List<NewsDto> getNewsByCategory(String category) {
+    	// 1. Dao에서 카테고리 spl 가져오기
         return newsDao.findByCategoryOrderByCreateDateDesc(category).stream()
-                .map(this::convertToDto)
+                // 2. map으로 NewsDto의 convertToDto으로 전환해주기
+        		.map(NewsDto::convertToDto)
+        		// 3. collect으로 리스트로 보내기
                 .collect(Collectors.toList());
     }
     
     // 카테고리 메인뉴스 가져오기
     public NewsDto getTopNewsByCategory(String category) {
+    	// 1. 
         Page<News> newsPage = newsDao.findTopByCategoryOrderByLikecountDescViewcountDesc(category, PageRequest.of(0, 1));
-        return newsPage.hasContent() ? convertToDto(newsPage.getContent().get(0)) : null;
+        return newsPage.hasContent() ? NewsDto.convertToDto(newsPage.getContent().get(0)) : null;
     }
-	
+    
     //NewsView
     // 뉴스 가져오기 : id로 가져오기
     public NewsDto getNewsById(Integer id) {
+    	// 1. id로 DB 조회
         Optional<News> news = newsDao.findById(id);
-        if(news.isPresent()) {return convertToDto(news.get());}
+        // 2. DB 조회 갯수 null check
+        if(news.isPresent()) {return NewsDto.convertToDto(news.get());}
+        // 3. news를 DTO로 변경하 리턴
         return null;
     }
     
     // 인기 뉴스 가져오기
     public List<NewsDto> getPopularNews() {
         return newsDao.findTop6ByOrderByViewcountDesc().stream()
-                .map(this::convertToDto)
+                .map(NewsDto::convertToDto)
                 .collect(Collectors.toList());
     }
     
     // 최신 뉴스 목록 가져오기
     public List<NewsDto> getLatestNews() {
         return newsDao.findTop6ByOrderByCreateDateDesc().stream()
-                .map(this::convertToDto)
+                .map(NewsDto::convertToDto)
                 .collect(Collectors.toList());
     }
     
     // 관련 뉴스 가져오기
     public List<NewsDto> getRelatedNews(String category) {
         return newsDao.findTop6ByCategoryOrderByCreateDateDesc(category).stream()
-                .map(this::convertToDto)
+                .map(NewsDto::convertToDto)
                 .collect(Collectors.toList());
     }
-
-    // json type으로 컨버팅
-    private NewsDto convertToDto(News news) {
-    	return NewsDto.builder()
-                .id(news.getId())
-                .category(news.getCategory())
-                .title(news.getTitle())
-                .subtitle(news.getSubtitle())
-                .content(news.getContent())
-                .origin(news.getOrigin())
-                .image(news.getImage())
-                .writer(news.getWriter())
-                .viewcount(news.getViewcount())
-                .likecount(news.getLikecount())
-                .originDate(news.getOriginDate())
-                .createDate(news.getCreateDate())
-                .build();
+    
+    // 뉴스 조회수 가져오기
+    public void incrementNewsView(Integer id) {
+        newsDao.incrementViewCount(id);
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.commit.entity.News;
@@ -20,6 +21,7 @@ import com.commit.model.NewsDto;
 import com.commit.service.NewsService;
 
 @RestController
+@RequestMapping("/news")
 @CrossOrigin(origins = "http://localhost:3000")
 public class NewsController {
 
@@ -27,13 +29,14 @@ public class NewsController {
     private NewsService newsService;
     
     // 페이지네이션 컨트롤러 
-    @GetMapping("/news")
+    @GetMapping
     public Page<News> getNews(@PageableDefault(size=10, sort="id", direction = Sort.Direction.ASC) Pageable pageable){
     	Page<News> result = newsService.getPages(pageable);
     	return result;
     }
     
-    @GetMapping("/news/category/{category}")
+    // 뉴스 카테고리 가져오기
+    @GetMapping("/category/{category}")
     public ResponseEntity<Map<String, Object>> getNewsByCategory(@PathVariable(name = "category") String category) {
         List<NewsDto> newsList = newsService.getNewsByCategory(category);
         NewsDto topNews = newsService.getTopNewsByCategory(category);
@@ -49,14 +52,15 @@ public class NewsController {
         return ResponseEntity.ok(response);
     }
 
-
-    @GetMapping("/news/article/{id}")
+    // 뉴스 기사 가져오기
+    @GetMapping("/article/{id}")
     public ResponseEntity<?> getNewsById(@PathVariable(name = "id") Integer id) {
         NewsDto newsView = newsService.getNewsById(id);
         List<NewsDto> popularNews = newsService.getPopularNews();
         List<NewsDto> latestNews = newsService.getLatestNews();
         List<NewsDto> reletedNews = newsService.getRelatedNews(newsView.getCategory());
-
+        newsService.incrementNewsView(id);
+        
         Map<String, Object> response = new HashMap<>();
         response.put("news", newsView);
         response.put("popularNews", popularNews);
