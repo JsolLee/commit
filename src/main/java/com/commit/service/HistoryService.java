@@ -24,7 +24,7 @@ public class HistoryService {
 	 * ver1 public void saveLogOnLogin(LoginHistory loginHistory) {
 	 * historyDao.save(loginHistory); }
 	 */
-
+	/*
 	//ver2
 	public void saveLogOnLogin(String activitytype, String memberId) {
 
@@ -33,10 +33,11 @@ public class HistoryService {
 		if ("logout".equals(activitytype))
 			loginHistory.setExpiredDate(new Date());
 		historyDao.save(loginHistory);
+
 	}
-	/*
-	// ver3
-	@Transactional 
+	*/
+	// ver3 확정
+	@Transactional
 	public void saveLogOnLogin(String activitytype, String memberId) {
 		if("login".equals(activitytype)) {
 			LoginHistory loginHistory = new LoginHistory();
@@ -53,7 +54,7 @@ public class HistoryService {
 			
 		}		
 	}
-	*/
+	
 	public List<LoginHistoryDto> getLoginHistoryDto(String memberId) {
 		List<LoginHistory> loginHistories = historyDao.findLoginHistoriesByMemberIdOrderByCreateDateDesc(memberId);
 
