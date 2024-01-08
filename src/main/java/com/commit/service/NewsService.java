@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.commit.entity.Board;
 import com.commit.entity.News;
 import com.commit.model.NewsDto;
 import com.commit.repository.NewsDao;
@@ -20,11 +21,12 @@ import com.commit.repository.NewsDao;
 @Service
 public class NewsService {
 
-    @Autowired
-    private NewsDao newsDao;
-    
-    // 페이지네이션
-    Pageable pageable = PageRequest.of(0, 10);
+	@Autowired
+	private NewsDao newsDao;
+
+	// 페이지네이션
+	Pageable pageable = PageRequest.of(0, 10);
+
 	public Page<News> getPages(Pageable pageable) {
 		return newsDao.findAll(pageable);
 	}

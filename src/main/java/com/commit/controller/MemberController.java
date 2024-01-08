@@ -8,11 +8,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.commit.entity.LoginHistory;
 import com.commit.entity.Members;
@@ -51,7 +53,6 @@ public class MemberController {
 
 		Optional<Members> members = membersService.findByMemberIdAndMemberPw(membersDto);
 		if (members == null) {
-			// System.out.println(members);
 			session.setAttribute("msg", "Fail");
 			return ResponseEntity.badRequest().body(members);
 		} else {
@@ -60,7 +61,7 @@ public class MemberController {
 			// 세션에 memberId를 넣어줌
 			session.setAttribute("memberId", members.get().getMemberId());
 			session.setMaxInactiveInterval(60 * 30); // 세션 유지 시간 30분으로 설정
-			System.out.println("session : " + session.getAttribute("memberId"));
+//			System.out.println("session : " + session.getAttribute("memberId"));
 			// System.out.println(members);
 
 			sessionList.put(session.getId(), session);
@@ -69,20 +70,24 @@ public class MemberController {
 		}
 		return ResponseEntity.ok(members);
 	}
-	
+
 	@GetMapping("/Logout")
 	public ResponseEntity<?> logout(HttpSession session, HttpServletRequest request) {
 		session = request.getSession(false);
+
 		//System.out.println("1 :" + session.getId());
 		//System.out.println("sessionList1 :" + sessionList);
-		if(session != null) {
-			sessionList.remove(session.getId());
-			session.invalidate();
-		}
+		
 		//System.out.println("2 :" + session.getId());
 		//System.out.println("sessionList2 :" + sessionList);
 		
-		historyService.saveLogOnLogin("logout", session.getId());
+		if(session != null) {
+			String memberId = session.getAttribute("memberId").toString();
+			historyService.saveLogOnLogin("logout", memberId);
+
+			sessionList.remove(session.getId());
+			session.invalidate();
+		}
 		
 		return ResponseEntity.ok().build();
 	}

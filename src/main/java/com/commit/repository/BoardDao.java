@@ -12,4 +12,7 @@ public interface BoardDao extends JpaRepository<Board, Integer>{
     
     // 카테고리 검색 후 최신순으로 6개
     List<Board> findTop6ByCategoryOrderByCreateDateDesc(String category);
+    
+    // 최신순으로 6개
+    List<Board> findTop6ByOrderByCreateDateDesc();
 }

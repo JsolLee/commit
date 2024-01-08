@@ -47,7 +47,6 @@ public class MembersService {
 		
 		if (memberId != null) {
 			boolean test = bCryptPasswordEncoder.matches(memberPw, encodePw);
-			System.out.println("testPW : " + test);
 			if(test) {
 				members = membersDao.findByMemberIdAndMemberPw(memberId, encodePw);
 				return members;
