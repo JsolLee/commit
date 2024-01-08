@@ -10,10 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -93,4 +95,18 @@ public class NewsController {
 
         return ResponseEntity.ok(response);
     }
+    
+    // 뉴스 기사 좋아요 보내기 컨트롤러
+    // 추가 사항 : 로그인을 했을 때만 가능하며 로그인을 해서도 한 번만 할 수 있게 조정이 필요함
+    @PostMapping("/{id}/like")
+    public ResponseEntity<?> incrementLike(@PathVariable("id") Integer id) {
+        try {
+            newsService.incrementLikeCount(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error incrementing like count");
+        }
+    }
+    
+    // 뉴스 기사 스크랩 보내기 컨트롤러 -> 좋아요와 같은 로직, 다만 로그인을 하고 해야됨
 }

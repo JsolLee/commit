@@ -40,6 +40,12 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     @Query("UPDATE News n SET n.viewcount = n.viewcount + 1 WHERE n.id = :id")
     int incrementViewCount(@Param("id") Integer id);
     
+    // 뉴스 좋아요 수 증가
+    @Transactional
+    @Modifying
+    @Query("UPDATE News n SET n.likecount = n.likecount + 1 WHERE n.id = :id")
+    int incrementLikeCount(@Param("id") Integer id);
+    
     // NewsMain
     // 메인 중앙 뉴스 : 인기뉴스 가져오기
     List<News> findByOrderByViewcountDesc();
@@ -49,7 +55,5 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     
     // 같은 카테고리에서 3개 가져오기
     List<News> findTop3ByCategoryOrderByCreateDateDesc(String category);
-
-
 }
 

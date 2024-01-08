@@ -13,7 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.commit.entity.Board;
 import com.commit.entity.News;
 import com.commit.model.NewsDto;
 import com.commit.repository.NewsDao;
@@ -84,6 +83,11 @@ public class NewsService {
     // 뉴스 조회수 가져오기
     public void incrementNewsView(Integer id) {
         newsDao.incrementViewCount(id);
+    }
+    
+    // 뉴스 좋아요 수 가져오기
+    public int incrementLikeCount(Integer id) {
+        return newsDao.incrementLikeCount(id);
     }
     
     // NewsMain
