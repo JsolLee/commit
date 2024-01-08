@@ -23,18 +23,20 @@ import lombok.NoArgsConstructor;
 public class JobReport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "JOBREPORT_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId; //신고한 사람 아이디
-	@Column(name = "JOB_ID")
+	@Column(name = "JOB_ID", nullable=false)
 	private Integer jobId;
+	@Column(nullable = false)
 	private String content;
 	@CreatedDate
+	@Column(nullable = false)
 	private Timestamp createDate;
 	@Column(nullable = true)
 	private Timestamp deleteDate;
+	@Column(nullable = false)
 	private String deleteYN; //삭제 여부
 	
 }

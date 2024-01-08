@@ -1,5 +1,7 @@
 package com.commit.entity;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,11 +18,12 @@ import lombok.NoArgsConstructor;
 public class NewsScrap {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "NEWSSCRAP_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId;
-	@Column(name = "NEWS_ID")
+	@Column(name = "NEWS_ID", nullable=false)
 	private Integer newsId;
+	@Column(nullable=false)
+	private Timestamp createDate;
 }

@@ -27,16 +27,22 @@ public class BoardFile {
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "BOARDFILE_ID")
 	private Integer id;
-	@Column(name = "BOARD_ID")
+	@Column(name = "BOARD_ID", nullable=false)
 	private Integer boardId; // fk연결
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId; // fk연결
+	@Column(nullable=false)
 	private String originName;
+	@Column(nullable=false)
 	private String dir;
+	@Column(nullable=false)
 	private String name;
+	@Column(nullable=false)
 	private String type;
+	@Column(nullable=false)
 	private Integer size;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@LastModifiedDate
 	@Column(nullable=true, insertable = false)

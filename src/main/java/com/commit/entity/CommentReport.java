@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 public class CommentReport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "COMMENTREPORT_ID")
 	private Integer id;
 	@Column(name = "MEMBERS_ID")
@@ -32,11 +31,14 @@ public class CommentReport {
 	private Integer newsCommentId;
 	@Column(name = "BOARDCOMMENT_ID", nullable=true)
 	private Integer boardCommentId;
+	@Column(nullable=false)
 	private String content;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@Column(nullable = true)
 	private Timestamp deleteDate;
+	@Column(nullable=false)
 	private String deleteYN; //삭제 여부
 	
 }

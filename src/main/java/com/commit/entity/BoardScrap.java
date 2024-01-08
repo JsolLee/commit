@@ -16,11 +16,10 @@ import lombok.NoArgsConstructor;
 public class BoardScrap {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "BOARDSCRAP_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId;
-	@Column(name = "BOARD_ID")
+	@Column(name = "BOARD_ID", nullable=false)
 	private Integer boardId;
 }

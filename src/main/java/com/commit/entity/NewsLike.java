@@ -1,5 +1,9 @@
 package com.commit.entity;
 
+import java.sql.Timestamp;
+
+import org.springframework.data.annotation.CreatedDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,11 +20,13 @@ import lombok.NoArgsConstructor;
 public class NewsLike {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "NEWSLIKE_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId;
-	@Column(name = "NEWS_ID")
+	@Column(name = "NEWS_ID", nullable=false)
 	private Integer newsId;
+	@CreatedDate
+	@Column(nullable = false)
+	private Timestamp createDate;
 }

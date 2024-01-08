@@ -1,5 +1,9 @@
 package com.commit.entity;
 
+import java.sql.Timestamp;
+
+import org.springframework.data.annotation.CreatedDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,8 +23,11 @@ public class JobScrap {
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "JOBSCRAP_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId;
-	@Column(name = "JOB_ID")
+	@Column(name = "JOB_ID", nullable=false)
 	private Integer jobId;
+	@CreatedDate
+	@Column(nullable = false)
+	private Timestamp createDate;
 }

@@ -27,16 +27,23 @@ public class Members {
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "MEMBERS_ID") // 컬럼명을 새로 만들어 준다.
 	private Integer id;
+	@Column(nullable=false)
 	private String role;
+	@Column(nullable=false)
 	private String memberId;
+	@Column(nullable=false)
 	private String memberPw;
+	@Column(nullable=false)
 	private String email;
+	@Column(nullable=false)
 	private String nickName;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@LastModifiedDate
 	@Column(nullable = true, insertable = false)
 	private Timestamp updateDate;
+	@Column(nullable=false)
 	private String memberOut;
 	
 }

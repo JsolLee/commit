@@ -30,22 +30,25 @@ import lombok.ToString;
 public class NewsComment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "NEWSCOMMENT_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId; 
-	@Column(name = "NEWS_ID")
+	@Column(name = "NEWS_ID", nullable=false)
 	private Integer newsId;
+	@Column(nullable=false)
 	private Integer parentId; //default=0 //selfjoin
+	@Column(nullable=false)
 	private String content;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@LastModifiedDate
 	@Column(nullable=true, insertable = false)
 	private Timestamp updateDate;
 	@Column(nullable=true)
 	private Timestamp deleteDate;
+	@Column(nullable=false)
 	private String deleteYN;
 	
     // Members 테이블과의 관계 설정

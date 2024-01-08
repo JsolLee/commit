@@ -28,22 +28,28 @@ import lombok.NoArgsConstructor;
 public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "BOARD_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId; //fk연결
 	@Column(name = "BOARDFILE_ID", nullable=true)
 	private Integer boardFIleId; //fk연결
+	@Column(nullable=false)
 	private String category;
+	@Column(nullable=false)
 	private String title;
+	@Column(nullable=false)
 	private String content;
+	@Column(nullable=false)
 	private Integer viewcount;
+	@Column(nullable=false)
 	private Integer likecount;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@LastModifiedDate
 	@Column(nullable = true, insertable = false)
 	private Timestamp updateDate;
+	@Column(nullable=false)
 	private String deleteYN; //삭제 여부
 }

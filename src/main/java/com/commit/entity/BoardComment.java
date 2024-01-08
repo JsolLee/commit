@@ -24,21 +24,24 @@ import lombok.NoArgsConstructor;
 public class BoardComment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "BOARDCOMMENT_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId; 
-	@Column(name = "BOARD_ID")
+	@Column(name = "BOARD_ID", nullable=false)
 	private Integer boardId;
+	@Column(nullable=false)
 	private Integer parentId; //default=0 //selfjoin
+	@Column(nullable=false)
 	private String content;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@LastModifiedDate
 	@Column(nullable=true, insertable = false)
 	private Timestamp updateDate;
 	@Column(nullable=true)
 	private Timestamp deleteDate;
+	@Column(nullable=false)
 	private String deleteYN;
 }

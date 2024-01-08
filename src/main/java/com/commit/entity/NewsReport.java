@@ -26,15 +26,18 @@ public class NewsReport {
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "NEWSREPORT_ID")
 	private Integer id;
-	@Column(name = "MEMBERS_ID")
+	@Column(name = "MEMBERS_ID", nullable=false)
 	private Integer membersId; //신고한 사람 아이디
-	@Column(name = "NEWS_ID")
+	@Column(name = "NEWS_ID", nullable=false)
 	private Integer newsId;
+	@Column(nullable=false)
 	private String content;
 	@CreatedDate
+	@Column(nullable=false)
 	private Timestamp createDate;
 	@Column(nullable = true)
 	private Timestamp deleteDate;
+	@Column(nullable=false)
 	private String deleteYN; //삭제 여부
 	
 }

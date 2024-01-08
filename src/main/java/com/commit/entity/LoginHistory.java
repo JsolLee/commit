@@ -3,9 +3,7 @@ package com.commit.entity;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.Column;
@@ -32,9 +30,10 @@ public class LoginHistory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "LOGINHISTORY_ID")
 	private Integer id;
-	@Column(name = "MEMBER_ID")
+	@Column(name = "MEMBER_ID", nullable=false)
 	private String memberId;
 	@CreatedDate
+	@Column(nullable = false)
 	private Timestamp createDate;
 	private Date expiredDate;
 }
