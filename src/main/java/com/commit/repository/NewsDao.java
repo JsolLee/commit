@@ -49,4 +49,7 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     
     // 같은 카테고리에서 3개 가져오기
     List<News> findTop3ByCategoryOrderByCreateDateDesc(String category);
+
+
 }
+

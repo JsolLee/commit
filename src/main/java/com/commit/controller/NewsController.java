@@ -55,8 +55,8 @@ public class NewsController {
     // 페이지네이션 컨트롤러 
     @GetMapping("/catagory/**")
     public Page<News> getNews(@PageableDefault(size=10, sort="id", direction = Sort.Direction.ASC) Pageable pageable){
-    	Page<News> result = newsService.getPages(pageable);
-    	return result;
+       Page<News> result = newsService.getPages(pageable);
+       return result;
     }
     
     // 뉴스 카테고리 가져오기
