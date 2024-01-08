@@ -12,14 +12,20 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
 @Entity
-@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
 @NoArgsConstructor
+@ToString(exclude = {"member", "news"})
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="newscomment")
 public class NewsComment {
 	@Id
@@ -41,4 +47,14 @@ public class NewsComment {
 	@Column(nullable=true)
 	private Timestamp deleteDate;
 	private String deleteYN;
+	
+    // Members 테이블과의 관계 설정
+    @ManyToOne
+    @JoinColumn(name = "MEMBERS_ID", insertable = false, updatable = false)
+    private Members member;
+
+    // News 테이블과의 관계 설정
+    @ManyToOne
+    @JoinColumn(name = "NEWS_ID", insertable = false, updatable = false)
+    private News news;
 }
