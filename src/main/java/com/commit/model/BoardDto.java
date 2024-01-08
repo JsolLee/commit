@@ -24,7 +24,7 @@ public class BoardDto {
 	private Integer likecount;
 	private Timestamp createDate;
 	private Timestamp updateDate;
-	private String deleteYN; 
+	private String deleteYN = "N"; 
 	
 	@Builder
 	public BoardDto(Integer id, Integer membersId, Integer boardFIleId, String category, 
@@ -45,12 +45,14 @@ public class BoardDto {
 	
 	public Board toEntity() {
         return Board.builder()
+        		.id(this.id)
                 .title(this.title)
                 .content(this.content)
                 .category(this.category)
                 .membersId(this.membersId)
+                .viewcount(0)
+                .likecount(0)
                 .createDate(this.createDate)
-                .updateDate(this.updateDate)
                 .deleteYN(this.deleteYN)
                 .build();
     }
