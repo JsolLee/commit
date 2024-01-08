@@ -1,5 +1,6 @@
 package com.commit.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +29,31 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
     
-    // 페이지네이션 컨트롤러 
     @GetMapping
+    public List<News> getMainNews() {
+        List<News> mainNewsList = new ArrayList<>();
+        
+        // getFirstNews() 메서드 호출
+        List<News> firstNewsList = newsService.getFirstNews();
+        mainNewsList.addAll(firstNewsList);
+        
+//        // getFourFiveNews() 메서드 호출
+//        List<News> fourFiveNewsList = newsService.getFourFiveNews();
+//        mainNewsList.addAll(fourFiveNewsList);
+//        
+//        // getSixSevenNews() 메서드 호출
+//        List<News> sixSevenNewsList = newsService.getSixSevenNews();
+//        mainNewsList.addAll(sixSevenNewsList);
+        
+        // getCategoryNews() 메서드 호출
+        List<News> categoryNewsList = newsService.getCategoryNews();
+        mainNewsList.addAll(categoryNewsList);
+        
+        return mainNewsList;
+    }
+    
+    // 페이지네이션 컨트롤러 
+    @GetMapping("/catagory/**")
     public Page<News> getNews(@PageableDefault(size=10, sort="id", direction = Sort.Direction.ASC) Pageable pageable){
     	Page<News> result = newsService.getPages(pageable);
     	return result;
