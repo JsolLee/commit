@@ -56,31 +56,40 @@
 <details>
   <summary>사용자/마이페이지</summary>
   
-  - 사용자 로그인 및 회원 가입  
-  - 마이페이지  
+  - 사용자 로그인 및 회원 가입
+    ![login](https://github.com/JsolLee/commit/assets/28701071/4be55fd4-b6dc-42fc-a8d1-3eb3844eb006)
+    ![join](https://github.com/JsolLee/commit/assets/28701071/7fc39e30-c2d1-4b30-8bcd-2d2fe8f2da4c)  
+  - 마이페이지
+    - 메인
+      ![mypagemain](https://github.com/JsolLee/commit/assets/28701071/fa7c1e3a-3261-4f66-8810-b5698249b39f)
+    - 비밀번호 확인  
+    - 닉네임 변경
+      ![mynickname](https://github.com/JsolLee/commit/assets/28701071/80e6d9b0-cc4a-42eb-901b-6d17f3621d97)  
+    - 비밀번호 변경    
+      
 </details>
 <details>
   <summary>뉴스</summary>
   
-  - 뉴스 메인
+  - 뉴스 메인  
     ![newsmain1](https://github.com/JsolLee/commit/assets/28701071/0e80e9f7-9ad9-437c-8f33-088f2d0eaf6d)
     ![newsmain2](https://github.com/JsolLee/commit/assets/28701071/54b68490-e790-479b-b69f-0d0de57e1d34)
-  - 뉴스 리스트
-    ![newslist1](https://github.com/JsolLee/commit/assets/28701071/c82c03ff-e7b9-4ff7-901b-d99b3301466b)
-    ![newslist2](https://github.com/JsolLee/commit/assets/28701071/6bc71f76-3139-44dd-bad0-11e8a92d877f)
-  - 뉴스 상세
-    ![newsview1](https://github.com/JsolLee/commit/assets/28701071/ac388baa-5f89-4498-9c05-05b2c2c10e55)
-    ![newsview2](https://github.com/JsolLee/commit/assets/28701071/e6ae01a3-b37b-4839-a6ca-13e0549ccc86)
+  - 뉴스 리스트  
+    ![newslist1](https://github.com/JsolLee/commit/assets/28701071/c82c03ff-e7b9-4ff7-901b-d99b3301466b)  
+    ![newslist2](https://github.com/JsolLee/commit/assets/28701071/6bc71f76-3139-44dd-bad0-11e8a92d877f)  
+  - 뉴스 상세  
+    ![newsview1](https://github.com/JsolLee/commit/assets/28701071/ac388baa-5f89-4498-9c05-05b2c2c10e55)  
+    ![newsview2](https://github.com/JsolLee/commit/assets/28701071/e6ae01a3-b37b-4839-a6ca-13e0549ccc86)  
 </details>
 <details>
   <summary>채용</summary>
   
-  - 채용 메인
-    ![joblist1](https://github.com/JsolLee/commit/assets/28701071/3246df2f-f3b8-4fe3-9e84-5fe02c6f0f23)
-    ![joblist2](https://github.com/JsolLee/commit/assets/28701071/a822c397-f7a0-40ac-9f46-7165af2dfe0b)
-  - 채용 상세
-    ![jobview1](https://github.com/JsolLee/commit/assets/28701071/491d108a-d82f-42b2-8f16-fb2093e0fef9)
-    ![jobview2](https://github.com/JsolLee/commit/assets/28701071/07503b20-48b9-49de-a805-f12a213c7d8e) 
+  - 채용 메인  
+    ![joblist1](https://github.com/JsolLee/commit/assets/28701071/3246df2f-f3b8-4fe3-9e84-5fe02c6f0f23)  
+    ![joblist2](https://github.com/JsolLee/commit/assets/28701071/a822c397-f7a0-40ac-9f46-7165af2dfe0b)  
+  - 채용 상세  
+    ![jobview1](https://github.com/JsolLee/commit/assets/28701071/491d108a-d82f-42b2-8f16-fb2093e0fef9)  
+    ![jobview2](https://github.com/JsolLee/commit/assets/28701071/07503b20-48b9-49de-a805-f12a213c7d8e)   
 </details>
 <details>
   <summary>커뮤니티</summary>
