@@ -1,5 +1,9 @@
 package com.commit.entity;
 
+import java.sql.Timestamp;
+
+import org.springframework.data.annotation.CreatedDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,4 +26,7 @@ public class BoardScrap {
 	private Integer membersId;
 	@Column(name = "BOARD_ID", nullable=false)
 	private Integer boardId;
+	@CreatedDate
+	@Column(nullable = false)
+	private Timestamp createDate;
 }
