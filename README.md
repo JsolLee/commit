@@ -103,7 +103,7 @@
     ![BoardFile](https://github.com/JsolLee/commit/assets/28701071/097bafba-fbd7-4c91-b52d-2a0e4709084b)
   - Comment
     ![Comment](https://github.com/JsolLee/commit/assets/28701071/ff17dc80-ddae-4290-a2bc-56b5549bc4aa)
-  - Like
+  - Like  
     ![Like](https://github.com/JsolLee/commit/assets/28701071/ee0a7d87-8d25-479d-9269-663ebb2d70fe)
   - Scarp
     ![scrap](https://github.com/JsolLee/commit/assets/28701071/e7e1c29b-e765-4a7d-a0df-e6c41d08a976)
