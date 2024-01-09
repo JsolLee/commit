@@ -2,6 +2,8 @@ package com.commit.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,4 +26,7 @@ public interface BoardDao extends JpaRepository<Board, Integer>{
 	            "(:option = '제목' AND b.title LIKE %:keyword%) OR " +
 	            "(:option = '내용' AND b.content LIKE %:keyword%)")
 	    List<Board> searchBoard(@Param("keyword") String keyword, @Param("option") String option);
+	 
+	//카테고리 별 조회 메서드
+	 Page<Board> findByCategory(String category, Pageable pageable);
 }

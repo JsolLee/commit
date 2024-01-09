@@ -49,13 +49,21 @@ public class BoardController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    //글 목록 조회 요청
+    
+    //전체 글 목록 조회 요청
     @GetMapping("/community/boardlist")
     public Page<BoardDto> list(@RequestParam(name = "page", defaultValue = "1") int page) {
         Pageable pageable = PageRequest.of(page - 1, 10, Sort.by(Direction.DESC, "id"));
-        return boardService.getBoardList(pageable);
+        return boardService.getBoardAllList(pageable);
     }
-
+    
+    //카테고리별 글 목록 조회 요청
+    @GetMapping("/community/boardlist/{category}")
+    public Page<BoardDto> categoryList(@RequestParam(name = "page", defaultValue = "1") int page,
+                               @PathVariable(name = "category") String category) {
+        Pageable pageable = PageRequest.of(page - 1, 10, Sort.by(Direction.DESC, "id"));
+        return boardService.getBoardList(pageable, category);
+    }
     
     //글 상세 페이지 요청
     @GetMapping("/community/boarddetail/{id}")
