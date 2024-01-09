@@ -55,28 +55,44 @@
 ## 4. 실행 화면
 <details>
   <summary>사용자/마이페이지</summary>
-  1. 사용자 로그인 및 회원 가입
-  2. 마이페이지
+  
+  - 사용자 로그인 및 회원 가입  
+  - 마이페이지  
 </details>
 <details>
   <summary>뉴스</summary>
-  1. 뉴스 메인
-  2. 뉴스 리스트
-  3. 뉴스 상세
+  
+  - 뉴스 메인
+    ![newsmain1](https://github.com/JsolLee/commit/assets/28701071/0e80e9f7-9ad9-437c-8f33-088f2d0eaf6d)
+    ![newsmain2](https://github.com/JsolLee/commit/assets/28701071/54b68490-e790-479b-b69f-0d0de57e1d34)
+  - 뉴스 리스트
+    ![newslist1](https://github.com/JsolLee/commit/assets/28701071/c82c03ff-e7b9-4ff7-901b-d99b3301466b)
+    ![newslist2](https://github.com/JsolLee/commit/assets/28701071/6bc71f76-3139-44dd-bad0-11e8a92d877f)
+  - 뉴스 상세
+    ![newsview1](https://github.com/JsolLee/commit/assets/28701071/ac388baa-5f89-4498-9c05-05b2c2c10e55)
+    ![newsview2](https://github.com/JsolLee/commit/assets/28701071/e6ae01a3-b37b-4839-a6ca-13e0549ccc86)
 </details>
 <details>
   <summary>채용</summary>
-  1. 채용 메인
-  2. 채용 상세
+  
+  - 채용 메인
+    ![joblist1](https://github.com/JsolLee/commit/assets/28701071/3246df2f-f3b8-4fe3-9e84-5fe02c6f0f23)
+    ![joblist2](https://github.com/JsolLee/commit/assets/28701071/a822c397-f7a0-40ac-9f46-7165af2dfe0b)
+  - 채용 상세
+    ![jobview1](https://github.com/JsolLee/commit/assets/28701071/491d108a-d82f-42b2-8f16-fb2093e0fef9)
+    ![jobview2](https://github.com/JsolLee/commit/assets/28701071/07503b20-48b9-49de-a805-f12a213c7d8e) 
 </details>
 <details>
   <summary>커뮤니티</summary>
-  1. 채용 메인
-  2. 채용 상세
+  
+  - 커뮤니티 메인
+  - 커뮤니티 리스트
+  - 채용 상세  
 </details>
 <details>
   <summary>댓글</summary>
-  1. 댓글 기능
+  
+  1. 댓글 기능  
 </details>
 
 ## 5. 구조 및 설계
