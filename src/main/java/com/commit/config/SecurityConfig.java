@@ -47,7 +47,8 @@ public class SecurityConfig{
 			)
 			*/
 			http.authorizeHttpRequests(requests -> 
-				requests.anyRequest().permitAll() //누구나 다 접근할 수 있게 하겠다.
+				requests
+				.anyRequest().permitAll() //누구나 다 접근할 수 있게 하겠다.
 				)	
 			.formLogin(login -> 
 				login
