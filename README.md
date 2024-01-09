@@ -32,7 +32,8 @@
 ### FRONTEND
 - HTML5
 - CSS5
-- REACT.js
+- Javascript (ES6+)
+- React.js
 ### BACKEND
 - Java 17
 - SpringBoot 3.2.0
