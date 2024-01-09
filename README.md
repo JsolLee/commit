@@ -1,4 +1,5 @@
 # COMMIT
+![main](https://github.com/JsolLee/commit/assets/28701071/e3f2c91a-b737-404b-8a1c-cbecb1a7262f)
 ---
 ## 1. 프로젝트 소개
 ### 목적 
@@ -71,12 +72,35 @@ MariaDB
 
 ## 5. 구조 및 설계
 ### DB 설계
-
 <details>
   <summary>ERD</summary>
+  
+  ![erd](https://github.com/JsolLee/commit/assets/28701071/b5ca98ee-fa0b-410c-9790-c3eab40c7f9a)
 </details>
 <details>
-  <summary>테이블</summary>  
+  <summary>테이블</summary>
+  
+  - Members
+    ![members](https://github.com/JsolLee/commit/assets/28701071/ca48bf86-523d-4f38-95e5-1ef48d81246b)
+  - LoginHistory
+  - News
+    ![News](https://github.com/JsolLee/commit/assets/28701071/7899d137-f4f3-4f7e-ba3c-fad880bfe51d)
+  - Job
+    ![Job](https://github.com/JsolLee/commit/assets/28701071/79724d7b-f8b2-425e-be5e-631c92275df6)
+  - Board
+    ![Board](https://github.com/JsolLee/commit/assets/28701071/ef80c34d-959c-49dc-af58-51ce375e822f)
+  - BoardFile
+    ![BoardFile](https://github.com/JsolLee/commit/assets/28701071/097bafba-fbd7-4c91-b52d-2a0e4709084b)
+  - Comment
+    ![Comment](https://github.com/JsolLee/commit/assets/28701071/ff17dc80-ddae-4290-a2bc-56b5549bc4aa)
+  - Like
+    ![Like](https://github.com/JsolLee/commit/assets/28701071/ee0a7d87-8d25-479d-9269-663ebb2d70fe)
+  - Scarp
+    ![scrap](https://github.com/JsolLee/commit/assets/28701071/e7e1c29b-e765-4a7d-a0df-e6c41d08a976)
+  - Report
+    ![Report1](https://github.com/JsolLee/commit/assets/28701071/8f7e09f3-1ee9-4d27-ba95-4b2dcbd05de2)
+   ![Report2](https://github.com/JsolLee/commit/assets/28701071/16f342c4-3bcf-47d1-bd3e-0ffa94f3f53b) 
+  
 </details>
 
 
