@@ -49,7 +49,7 @@ public class NewsComment {
 	@Column(nullable=true)
 	private Timestamp deleteDate;
 	@Column(nullable=false)
-	private String deleteYN = "N"; // 기본값을 'N'으로 설정;
+	private String deleteYN;
 	
     // Members 테이블과의 관계 설정
     @ManyToOne
