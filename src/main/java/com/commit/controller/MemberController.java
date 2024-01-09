@@ -52,14 +52,20 @@ public class MemberController {
 			HttpServletRequest httpServletRequest) {
 
 		Optional<Members> members = membersService.findByMemberIdAndMemberPw(membersDto);
-		if (members == null) {
+		if (!members.isPresent()) {
 			session.setAttribute("msg", "Fail");
-			return ResponseEntity.badRequest().body(members);
+			return ResponseEntity.badRequest().body("아이디 또는 비밀번호를 다시 입력하세요.");
+		}else if(members.get().getMemberOut().equals("Y")) {
+			session.setAttribute("msg", "Fail");
+			return ResponseEntity.badRequest().body("이미 탈퇴한 회원입니다.");
 		} else {
 			httpServletRequest.getSession().invalidate(); // 기존 세션 파기
 			session = httpServletRequest.getSession(true); // 세션이 없으면 생성
 			// 세션에 memberId를 넣어줌
 			session.setAttribute("memberId", members.get().getMemberId());
+			session.setAttribute("members_Id", members.get().getId());
+//			Integer membersId = (Integer) session.getAttribute("members_Id"); <-- 혹시 몰라 Integer로 캐스팅 해놓은 코드
+			Object membersId = session.getAttribute("members_Id");
 			session.setMaxInactiveInterval(60 * 30); // 세션 유지 시간 30분으로 설정
 //			System.out.println("session : " + session.getAttribute("memberId"));
 			// System.out.println(members);
@@ -74,12 +80,6 @@ public class MemberController {
 	@GetMapping("/Logout")
 	public ResponseEntity<?> logout(HttpSession session, HttpServletRequest request) {
 		session = request.getSession(false);
-
-		//System.out.println("1 :" + session.getId());
-		//System.out.println("sessionList1 :" + sessionList);
-		
-		//System.out.println("2 :" + session.getId());
-		//System.out.println("sessionList2 :" + sessionList);
 		
 		if(session != null) {
 			String memberId = session.getAttribute("memberId").toString();

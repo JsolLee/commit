@@ -40,19 +40,20 @@ public class MembersService {
     }
 
 	public Optional<Members> findByMemberIdAndMemberPw(MembersDto membersDto) {
-		Optional<Members> members;
 		String memberId = membersDto.getMemberId();
 		String memberPw = membersDto.getMemberPw();
-		String encodePw = membersDao.findByMemberId(memberId).get().getMemberPw();
-		
-		if (memberId != null) {
+
+		Optional<Members> members = membersDao.findByMemberId(memberId);
+				
+		if (members.isPresent()) {
+			String encodePw = members.get().getMemberPw();
 			boolean test = bCryptPasswordEncoder.matches(memberPw, encodePw);
 			if(test) {
 				members = membersDao.findByMemberIdAndMemberPw(memberId, encodePw);
 				return members;
 			}
 		}
-        return null;
+        return Optional.empty(); // null을 리턴할 경우 nullPointException 에러를 일으킬 수 있음
 	}
 	
 }

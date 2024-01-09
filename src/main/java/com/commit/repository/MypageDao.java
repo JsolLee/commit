@@ -11,7 +11,7 @@ import com.commit.entity.Members;
 @Repository
 public interface MypageDao extends JpaRepository<Members, Integer> {
 	
-	   Optional<Members> findByMemberId(String memberId);
 	   Optional<Members> findAllByMemberId(String memberId);
-	   
+	   Optional<Members> findByMemberId(String memberId);
+	   Optional<Members> findByNickName(String nickName);
 }
