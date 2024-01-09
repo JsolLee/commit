@@ -40,19 +40,19 @@ public class BoardService {
 			   List<Board> AllList = boardDao.findTop6ByOrderByCreateDateDesc();
 			   
 			   // 나머지는 카테리고별 최신 순으로 6개 설정
-			   List<Board> joinList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("join");
-			   List<Board> psList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("ps");
-			   List<Board> adviceList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("advice");
-			   List<Board> jobList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("job");
-			   List<Board> etcList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("etc");
+			   List<Board> newStartList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("newstart");
+			   List<Board> resumeList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("resume");
+			   List<Board> reviewList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("review");
+			   List<Board> recruitList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("recruit");
+			   List<Board> interViewList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("interview");
 			   
 			   List<Board> allBoardList = new ArrayList<>();
 			   allBoardList.addAll(AllList);
-			   allBoardList.addAll(joinList);
-			   allBoardList.addAll(psList);
-			   allBoardList.addAll(adviceList);
-			   allBoardList.addAll(jobList);
-			   allBoardList.addAll(etcList);
+			   allBoardList.addAll(newStartList);
+			   allBoardList.addAll(resumeList);
+			   allBoardList.addAll(reviewList);
+			   allBoardList.addAll(recruitList);
+			   allBoardList.addAll(interViewList);
 			   
 			   return allBoardList;
 		   }

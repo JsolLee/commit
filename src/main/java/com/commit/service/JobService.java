@@ -1,6 +1,5 @@
 package com.commit.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +51,10 @@ public class JobService {
                 .location2(job.getLocation2())
                 .content(job.getContent())
                 .build();
+    }
+    
+    // 채용 조회수 가져오기
+    public void incrementJobView(Integer id) {
+    	jobDao.incrementViewCount(id);
     }
 }

@@ -27,7 +27,10 @@ public class JobController {
 
     @GetMapping("/Job/JobView/{id}")
     public JobDto getNewsById(@PathVariable(name = "id") Integer id) {
-        return jobService.getJobById(id);
-
+        jobService.incrementJobView(id);
+    	
+    	JobDto jobDto = jobService.getJobById(id);
+    	
+    	return jobDto;
     }
 }
