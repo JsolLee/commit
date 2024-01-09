@@ -30,18 +30,26 @@
 
 ## 3. 개발 환경
 ### FRONTEND
-
+- HTML5
+- CSS5
+- REACT.js
 ### BACKEND
-#### 주요 프레임워크/라이브러리
 - Java 17
 - SpringBoot 3.2.0
 - JPA(Spring Data JPA)
-  
-#### Build Tool
-Gradle 7.2
-
 #### DataBase
-MariaDB
+- MariaDB
+#### Server
+- AWS RDS
+####  Tool
+- Eclipse STS
+- Visual Studio Code
+- DBeaver
+#### Collaborations
+- Github
+- Notion
+- Discord
+
 
 ## 4. 실행 화면
 <details>
