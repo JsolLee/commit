@@ -19,6 +19,7 @@ import lombok.Setter;
 public class NewsCommentDto {
     private Integer id;
     private Integer membersId;
+    private String memberId;
     private Integer newsId; 
     private Integer parentId;
     private String content;
@@ -30,9 +31,20 @@ public class NewsCommentDto {
     private String newsTitle; // 추가된 필드
 
     public static NewsCommentDto convertToDto(NewsComment newsComment) {
-        return NewsCommentDto.builder()
+        
+    	NewsCommentDto dto = new NewsCommentDto();
+    	
+        // 여기서 member가 null인지 확인
+        if (newsComment.getMember() != null) {
+            dto.setMemberId(newsComment.getMember().getId().toString());
+        } else {
+            dto.setMemberId("아이디가 없습니다!"); // null 일 경우에 대체
+        }
+    	
+    	return NewsCommentDto.builder()
                 .id(newsComment.getId())
                 .membersId(newsComment.getMember().getId())
+                .memberId(newsComment.getMember().getMemberId())
                 .newsId(newsComment.getNews().getId())
                 .parentId(newsComment.getParentId())
                 .content(newsComment.getContent())
