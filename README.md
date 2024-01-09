@@ -56,12 +56,12 @@
 <details>
   <summary>사용자/마이페이지</summary>
   
-  - 사용자 로그인 및 회원 가입
-    ![login](https://github.com/JsolLee/commit/assets/28701071/4be55fd4-b6dc-42fc-a8d1-3eb3844eb006)
-    ![join](https://github.com/JsolLee/commit/assets/28701071/7fc39e30-c2d1-4b30-8bcd-2d2fe8f2da4c)  
-  - 마이페이지
-    - 메인
-      ![mypagemain](https://github.com/JsolLee/commit/assets/28701071/fa7c1e3a-3261-4f66-8810-b5698249b39f)
+  - 사용자 로그인 및 회원 가입  
+    ![login](https://github.com/JsolLee/commit/assets/28701071/4be55fd4-b6dc-42fc-a8d1-3eb3844eb006)  
+    ![join](https://github.com/JsolLee/commit/assets/28701071/7fc39e30-c2d1-4b30-8bcd-2d2fe8f2da4c)    
+  - 마이페이지  
+    - 메인  
+      ![mypagemain](https://github.com/JsolLee/commit/assets/28701071/fa7c1e3a-3261-4f66-8810-b5698249b39f)  
     - 비밀번호 확인  
     - 닉네임 변경
       ![mynickname](https://github.com/JsolLee/commit/assets/28701071/80e6d9b0-cc4a-42eb-901b-6d17f3621d97)  
