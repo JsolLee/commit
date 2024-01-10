@@ -2,6 +2,7 @@ package com.commit.model;
 
 import java.sql.Timestamp;
 
+
 import com.commit.entity.BoardScrap;
 
 import lombok.AllArgsConstructor;
@@ -29,4 +30,5 @@ public class BoardScrapDto {
 				.createDate(boardScrap.getCreateDate())
 				.build();
 	}
+
 }

@@ -15,7 +15,7 @@ import lombok.Setter;
 @Builder
 public class BoardDto {
 	private Integer id;
-	private Integer membersId;
+	private Integer membersId = 2;
 	private Integer boardFIleId; 
 	private String category;
 	private String title;
@@ -26,10 +26,12 @@ public class BoardDto {
 	private Timestamp updateDate;
 	private String deleteYN = "N"; 
 	
+	private String nickname;
+	
 	@Builder
 	public BoardDto(Integer id, Integer membersId, Integer boardFIleId, String category, 
 	                String title, String content, Integer viewcount, Integer likecount, 
-	                Timestamp createDate, Timestamp updateDate, String deleteYN) {
+	                Timestamp createDate, Timestamp updateDate, String deleteYN, String nickname) {
 	    this.id = id;
 	    this.membersId = membersId;
 	    this.boardFIleId = boardFIleId;
@@ -41,6 +43,7 @@ public class BoardDto {
 	    this.createDate = createDate;
 	    this.updateDate = updateDate;
 	    this.deleteYN = deleteYN;
+	    this.nickname = nickname;
 	}
 	
 	public Board toEntity() {
@@ -53,7 +56,7 @@ public class BoardDto {
                 .viewcount(0)
                 .likecount(0)
                 .createDate(this.createDate)
-                .deleteYN(this.deleteYN)
+                .deleteYN(this.deleteYN)                
                 .build();
     }
 }

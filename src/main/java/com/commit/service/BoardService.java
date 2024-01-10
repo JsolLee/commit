@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.commit.entity.Board;
 import com.commit.entity.BoardLike;
+import com.commit.entity.Members;
 import com.commit.model.BoardDto;
 import com.commit.repository.BoardDao;
 import com.commit.repository.MembersDao;
@@ -74,16 +75,24 @@ public class BoardService {
 					   .build();
 		   }
 		   
+       // 멤버의 닉네임을 가져오는 메서드
+	   private String getMemberNickname(Integer membersId) {
+		    if (membersId == null) {
+		        return ""; 
+		    }
+		    Optional<Members> members = membersDao.findById(membersId);
+		    return members.map(Members::getNickName).orElse(null);
+		}
+		   
 	   //게시판 글 작성 메서드
 	   @Transactional
 	   public Integer boardWrite(BoardDto boardDto) {
 	       return boardDao.save(boardDto.toEntity()).getId();
 	   }
-
-	   
-	   // 게시판 글 목록 조회 메서드
+    
+	    // 게시판 글 목록 조회 메서드
 	    @Transactional
-	    public Page<BoardDto> getBoardList(Pageable pageable){
+	    public Page<BoardDto> getBoardAllList(Pageable pageable){
 	        Page<Board> boards = boardDao.findAll(pageable);
 	        Page<BoardDto> boardDtoList = boards.map(board -> BoardDto.builder()
 	                .id(board.getId())
@@ -94,9 +103,40 @@ public class BoardService {
 	                .viewcount(board.getViewcount())
 	                .likecount(board.getLikecount())
 	                .build());
-
+	        
+	        // 각 BoardDto에 대해 닉네임 추가
+	        boardDtoList.forEach(boardDto -> boardDto.setNickname(getMemberNickname(boardDto.getMembersId())));
 	        return boardDtoList;           
 	    }
+	    
+	    //카테고리 별 조회 메서드
+	    @Transactional
+	    public Page<BoardDto> getBoardList(Pageable pageable, String category) {
+	        Page<Board> boards;
+	        
+	        if (category != null && !category.isEmpty()) {
+	            // 카테고리가 지정된 경우 해당 카테고리의 글 목록 조회
+	            boards = boardDao.findByCategory(category, pageable);
+	        } else {
+	            // 카테고리가 지정되지 않은 경우 전체 글 목록 조회
+	            boards = boardDao.findAll(pageable);
+	        }
+
+	        Page<BoardDto> boardDtoList = boards.map(board -> BoardDto.builder()
+	                .id(board.getId())
+	                .title(board.getTitle())
+	                .content(board.getContent())
+	                .membersId(board.getMembersId())
+	                .createDate(board.getCreateDate())
+	                .viewcount(board.getViewcount())
+	                .likecount(board.getLikecount())
+	                .build());
+	        
+	        // 각 BoardDto에 대해 닉네임 추가
+	        boardDtoList.forEach(boardDto -> boardDto.setNickname(getMemberNickname(boardDto.getMembersId())));
+	        return boardDtoList;
+	    }
+	    
 	   
 	  //게시판 글 상세 조회 메서드
 	  @Transactional
@@ -122,9 +162,12 @@ public class BoardService {
 				  .deleteYN(board.getDeleteYN())
 				  .build();
 		  
+		  // 새로운 코드: BoardDto에 닉네임 추가
+	      ((BoardDto) boardDto).setNickname(getMemberNickname(3));
+		  
 		  return boardDto;
 	  }
-	   
+	    	   
 	  
 	  //게시판 글 삭제 메서드
 	  @Transactional

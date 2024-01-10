@@ -45,4 +45,5 @@ public class BoardScrap {
 	@ManyToOne
 	@JoinColumn(name = "BOARD_ID", insertable = false, updatable = false)
 	private Board board;
+
 }
