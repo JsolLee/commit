@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.commit.entity.Board;
 import com.commit.entity.BoardLike;
 import com.commit.entity.BoardScrap;
 import com.commit.entity.JobScrap;
@@ -19,6 +20,7 @@ import com.commit.repository.BoardLikeDao;
 import com.commit.repository.BoardScrapDao;
 import com.commit.repository.JobScrapDao;
 import com.commit.repository.MembersDao;
+import com.commit.repository.MypageBoardDao;
 import com.commit.repository.MypageDao;
 import com.commit.repository.NewsCommentDao;
 import com.commit.repository.NewsLikeDao;
@@ -38,10 +40,10 @@ public class MypageService {
 	@Autowired
 	private BoardScrapDao boardScrapDao;
 	
-	// 내가 쓴 글(커뮤니티)
-	/*
-	 * @Autowired private MypageBoardDao boardDao;
-	 */
+	 // 내가 쓴 글(커뮤니티)
+	  @Autowired
+	  private MypageBoardDao boardDao;
+	 
 	
 	// 내가 쓴 댓글(뉴스)
 	@Autowired
@@ -169,7 +171,7 @@ public class MypageService {
 		
 		return boardLike;
 	}
-/*	
+	
 	// 내가 쓴 글(커뮤니티)
 	public List<Board> getContentByMemberId(Integer membersId, String memberId){
 		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
@@ -178,7 +180,7 @@ public class MypageService {
 		
 		return boardContent;
 	}
-*/	
+	
 	// 내가 쓴 댓글(뉴스)
 	public List<NewsComment> getNewsCommentByMemberId(Integer membersId, String memberId){
 		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);

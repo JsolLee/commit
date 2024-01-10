@@ -1,6 +1,7 @@
 package com.commit.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,19 +13,21 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
 @Entity
-@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
 @NoArgsConstructor
+@ToString(exclude = {"member"})
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="board")
-@AllArgsConstructor
-@Builder
 public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,12 +47,25 @@ public class Board {
 	private Integer viewcount;
 	@Column(nullable=false)
 	private Integer likecount;
+//	@CreatedDate
+//	@Column(nullable=false)
+//	private Timestamp createDate;
 	@CreatedDate
-	@Column(nullable=false)
-	private Timestamp createDate;
+    @Column(name = "createDate")
+    private Timestamp createDate = Timestamp.valueOf(LocalDateTime.now());
 	@LastModifiedDate
 	@Column(nullable = true, insertable = false)
 	private Timestamp updateDate;
 	@Column(nullable=false)
 	private String deleteYN; //삭제 여부
+	
+    // Members 테이블과의 관계 설정
+    @ManyToOne
+    @JoinColumn(name = "MEMBERS_ID", insertable = false, updatable = false)
+    private Members member;
+//
+//    // Board 테이블과의 관계 설정
+//    @ManyToOne
+//    @JoinColumn(name = "BOARD_ID", insertable = false, updatable = false)
+//    private Board board;
 }
