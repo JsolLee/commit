@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.commit.entity.Board;
 import com.commit.entity.BoardLike;
 import com.commit.entity.BoardScrap;
 import com.commit.entity.JobScrap;
@@ -226,7 +227,7 @@ public class MypageController {
 		
 		return ResponseEntity.ok(boardLike);
 	}
-/*	
+	
 	// 내가 쓴 글(커뮤니티)
 	@GetMapping("/myCommunity")
 	public ResponseEntity<?> getMyContent(HttpSession session, HttpServletRequest request) {
@@ -247,7 +248,7 @@ public class MypageController {
 		
 		return ResponseEntity.ok(boardContent);
 	}
-*/
+
 	// 내가 쓴 댓글(뉴스)
 	@GetMapping("/myComment")
 	public ResponseEntity<?> getMyComment(HttpSession session, HttpServletRequest request) {

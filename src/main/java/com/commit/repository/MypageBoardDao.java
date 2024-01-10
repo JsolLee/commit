@@ -10,5 +10,5 @@ import com.commit.entity.Board;
 @Repository
 public interface MypageBoardDao extends JpaRepository<Board, Integer>{	
 	// 마이페이지 -> 내가 쓴 글(커뮤니티)
-//	List<Board> findByMember_Id(Integer membersId);
+	List<Board> findByMember_Id(Integer membersId);
 }
