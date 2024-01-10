@@ -7,13 +7,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
+@ToString(exclude = {"members", "news"})
 @Table(name="newsscrap")
 public class NewsScrap {
 	@Id
@@ -26,4 +33,14 @@ public class NewsScrap {
 	private Integer newsId;
 	@Column(nullable=false)
 	private Timestamp createDate;
+	
+	// Members 테이블과의 관계 설정
+    @ManyToOne
+    @JoinColumn(name = "MEMBERS_ID", insertable = false, updatable = false)
+    private Members members;
+
+    // News 테이블과의 관계 설정
+    @ManyToOne
+    @JoinColumn(name = "NEWS_ID", insertable = false, updatable = false)
+    private News news;
 }
