@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.commit.entity.Board;
@@ -93,7 +95,7 @@ public class BoardService {
 	    // 게시판 글 목록 조회 메서드
 	    @Transactional
 	    public Page<BoardDto> getBoardAllList(Pageable pageable){
-	        Page<Board> boards = boardDao.findAll(pageable);
+	        Page<Board> boards = boardDao.findDeletedBoards(pageable);
 	        Page<BoardDto> boardDtoList = boards.map(board -> BoardDto.builder()
 	                .id(board.getId())
 	                .title(board.getTitle())
@@ -102,6 +104,7 @@ public class BoardService {
 	                .createDate(board.getCreateDate())
 	                .viewcount(board.getViewcount())
 	                .likecount(board.getLikecount())
+	                .category(board.getCategory())
 	                .build());
 	        
 	        // 각 BoardDto에 대해 닉네임 추가
@@ -130,6 +133,7 @@ public class BoardService {
 	                .createDate(board.getCreateDate())
 	                .viewcount(board.getViewcount())
 	                .likecount(board.getLikecount())
+	                .category(board.getCategory())
 	                .build());
 	        
 	        // 각 BoardDto에 대해 닉네임 추가
@@ -141,7 +145,7 @@ public class BoardService {
 	  //게시판 글 상세 조회 메서드
 	  @Transactional
 	  public BoardDto getBoard(Integer id) {
-		  Optional<Board> boardWrapper = boardDao.findById(id);
+		  Optional<Board> boardWrapper = boardDao.findByIdAndDeleteYN(id, "N");
 		  
 		  Board board = boardWrapper.get();
 		  
@@ -162,18 +166,37 @@ public class BoardService {
 				  .deleteYN(board.getDeleteYN())
 				  .build();
 		  
-		  // 새로운 코드: BoardDto에 닉네임 추가
-	      ((BoardDto) boardDto).setNickname(getMemberNickname(3));
+		  // 닉네임 추가
+		  boardDto.setNickname(getMemberNickname(board.getMembersId()));
 		  
 		  return boardDto;
 	  }
 	    	   
 	  
 	  //게시판 글 삭제 메서드
-	  @Transactional
-	  public void boarddelete(Integer id) {
-		  boardDao.deleteById(id);
-	  }
+//	  @Transactional
+//	  public void boarddelete(Integer id) {
+//		  boardDao.deleteById(id);
+//	  }
+	  
+	  //게시판 글 삭제 메서드 (YN으로 변경)
+	  public BoardDto boarddelete(Integer id) {
+		    Optional<Board> board = boardDao.findById(id);
+
+		    if (board.isPresent()) {
+		        Board deletedBoard = board.get();
+		        deletedBoard.setDeleteYN("Y"); // deleteYN을 'Y'로 설정
+
+		        boardDao.save(deletedBoard); // 업데이트된 포스트를 저장
+
+		        // 삭제된 게시글 정보를 BoardDto로 변환하여 반환
+		        return convertToDto(deletedBoard);
+		    } else {
+		        // 게시글이 존재하지 않을 경우 RuntimeException을 던짐
+		        throw new RuntimeException("게시글이 존재하지 않습니다. id: " + id);
+		    }
+		}
+
 	  
 	  // 게시판 글 수정 메서드
 	  @Transactional

@@ -72,10 +72,16 @@ public class BoardController {
     }
     
     //글 삭제 요청
-    @DeleteMapping("/community/boarddelete/{id}")
-    public void delete(@PathVariable("id") Integer id) {
-        boardService.boarddelete(id);
-    }
+//    @DeleteMapping("/community/boarddelete/{id}")
+//    public void delete(@PathVariable("id") Integer id) {
+//        boardService.boarddelete(id);
+//    }
+    
+	  @PostMapping("/community/boarddelete/{id}")
+	  public void delete(@PathVariable("id") Integer id) {
+	      boardService.boarddelete(id);
+	  }
+    
     
     // 글 수정 페이지 가져오기
     @GetMapping("/community/boardedit/{id}")

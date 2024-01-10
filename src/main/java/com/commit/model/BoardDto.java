@@ -15,7 +15,7 @@ import lombok.Setter;
 @Builder
 public class BoardDto {
 	private Integer id;
-	private Integer membersId = 2;
+	private Integer membersId=3;
 	private Integer boardFIleId; 
 	private String category;
 	private String title;

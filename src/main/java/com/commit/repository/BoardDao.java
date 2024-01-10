@@ -1,6 +1,7 @@
 package com.commit.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,5 +29,18 @@ public interface BoardDao extends JpaRepository<Board, Integer>{
 	    List<Board> searchBoard(@Param("keyword") String keyword, @Param("option") String option);
 	 
 	//카테고리 별 조회 메서드
-	 Page<Board> findByCategory(String category, Pageable pageable);
+//	 Page<Board> findByCategory(String category, Pageable pageable);
+	 
+	//카테고리별 조회 메서드
+	 @Query("SELECT b FROM Board b WHERE b.category = :category AND b.deleteYN = 'N'")
+	    Page<Board> findByCategory(@Param("category") String category, Pageable pageable);
+	 
+	//목록에서 DeleteYN이 N인 값만 조회
+	  @Query("SELECT b FROM Board b WHERE b.deleteYN = 'N'")
+	    Page<Board> findDeletedBoards(Pageable pageable);
+	  
+	 //상세 페이지에서 DeleteYn이 n인 값만 조회
+	  @Query("SELECT b FROM Board b WHERE b.id = :id AND b.deleteYN = :deleteYN")
+	    Optional<Board> findByIdAndDeleteYN(@Param("id") Integer id, @Param("deleteYN") String deleteYN);
+
 }
