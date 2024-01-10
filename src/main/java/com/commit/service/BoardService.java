@@ -40,7 +40,7 @@ public class BoardService {
 	    
 	    public List<Board> getBoard() {
 			   // 전체글은 createDate가 최신인 순으로 6개
-			   List<Board> AllList = boardDao.findTop6ByOrderByCreateDateDesc();
+			   // List<Board> AllList = boardDao.findTop6ByOrderByCreateDateDesc();
 			   
 			   // 나머지는 카테리고별 최신 순으로 6개 설정
 			   List<Board> newStartList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("newstart");
@@ -50,7 +50,7 @@ public class BoardService {
 			   List<Board> interViewList = boardDao.findTop6ByCategoryOrderByCreateDateDesc("interview");
 			   
 			   List<Board> allBoardList = new ArrayList<>();
-			   allBoardList.addAll(AllList);
+			   // allBoardList.addAll(AllList);
 			   allBoardList.addAll(newStartList);
 			   allBoardList.addAll(resumeList);
 			   allBoardList.addAll(reviewList);

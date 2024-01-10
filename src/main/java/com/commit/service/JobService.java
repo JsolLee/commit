@@ -57,4 +57,8 @@ public class JobService {
     public void incrementJobView(Integer id) {
     	jobDao.incrementViewCount(id);
     }
+
+	public int jobScrap(Integer id) {
+		return jobDao.jobScrap(id);
+	}
 }

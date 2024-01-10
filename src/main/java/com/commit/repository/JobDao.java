@@ -19,5 +19,10 @@ public interface JobDao extends JpaRepository<Job, Integer>{
     @Modifying
     @Query("UPDATE Job j SET j.viewcount = j.viewcount + 1 WHERE j.id = :id")
     int incrementViewCount(@Param("id") Integer id);
-
+	
+	// 스크랩 id에 JobId가져오기
+	@Transactional
+    @Modifying
+    @Query("INSERT INTO JobScrap (jobId) VALUES (:jobId)")
+    int jobScrap(@Param("jobId") Integer jobId);
 }
