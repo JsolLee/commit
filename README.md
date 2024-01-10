@@ -58,14 +58,25 @@
   
   - 사용자 로그인 및 회원 가입  
     ![login](https://github.com/JsolLee/commit/assets/28701071/4be55fd4-b6dc-42fc-a8d1-3eb3844eb006)  
-    ![join](https://github.com/JsolLee/commit/assets/28701071/7fc39e30-c2d1-4b30-8bcd-2d2fe8f2da4c)    
-  - 마이페이지  
-    - 메인  
-      ![mypagemain](https://github.com/JsolLee/commit/assets/28701071/fa7c1e3a-3261-4f66-8810-b5698249b39f)  
-    - 비밀번호 확인  
-    - 닉네임 변경
-      ![mynickname](https://github.com/JsolLee/commit/assets/28701071/80e6d9b0-cc4a-42eb-901b-6d17f3621d97)  
+    ![join](https://github.com/JsolLee/commit/assets/28701071/7fc39e30-c2d1-4b30-8bcd-2d2fe8f2da4c)
+  - 마이페이지    
+    - 메인      
+      ![mypagemain](https://github.com/JsolLee/commit/assets/28701071/fa7c1e3a-3261-4f66-8810-b5698249b39f)    
+    - 비밀번호 확인    
+      ![checkpwd](https://github.com/JsolLee/commit/assets/28701071/975aaf5e-b0e6-4462-b457-c19ad684a89b)   
+    - 닉네임 변경    
+      ![mynickname](https://github.com/JsolLee/commit/assets/28701071/80e6d9b0-cc4a-42eb-901b-6d17f3621d97)    
     - 비밀번호 변경    
+      ![changepwd](https://github.com/JsolLee/commit/assets/28701071/3067b65f-9a6e-4142-8004-340d5c0247f6)  
+    - 좋아요(뉴스, 커뮤니티)      
+      ![newslike](https://github.com/JsolLee/commit/assets/28701071/f6c186d7-505a-46bc-b0cf-6ca1bd29185b)    
+      ![communitylike](https://github.com/JsolLee/commit/assets/28701071/73ba5ffc-0c01-4ae5-a74b-d4a9d9a6eab6)    
+    - 스크랩(뉴스, 채용, 커뮤니티)
+      ![newsscrap](https://github.com/JsolLee/commit/assets/28701071/d8de5c52-4667-4e85-887d-a314834b03f9)
+      ![jobscrap](https://github.com/JsolLee/commit/assets/28701071/d91893ae-b2f8-433d-9529-2b8221b14f50)  
+      ![communityscrap](https://github.com/JsolLee/commit/assets/28701071/cbfca878-a334-462d-929f-49689989e597)  
+    - 내가 쓴 글, 댓글
+      ![mycomment](https://github.com/JsolLee/commit/assets/28701071/f615b099-8718-481d-9857-5ecb06bd2b6f)     
       
 </details>
 <details>
@@ -95,8 +106,12 @@
   <summary>커뮤니티</summary>
   
   - 커뮤니티 메인
-  - 커뮤니티 리스트
-  - 채용 상세  
+    ![communitymain](https://github.com/JsolLee/commit/assets/28701071/c2a1d665-e25b-4395-b855-6145787da9ee)   
+  - 커뮤니티 리스트  
+    ![communitylist](https://github.com/JsolLee/commit/assets/28701071/03ede125-55fd-4d56-8ca4-63b29dab9b1d)  
+  - 커뮤니티 글 보기
+    ![communityread](https://github.com/JsolLee/commit/assets/28701071/ead39eac-df17-4fca-8dd5-f1e27df6be35)  
+  - 커뮤니티 글 수정    
 </details>
 <details>
   <summary>댓글</summary>
