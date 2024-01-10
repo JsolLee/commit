@@ -1,18 +1,61 @@
 package com.commit.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.commit.entity.Board;
+import com.commit.entity.BoardLike;
+import com.commit.entity.BoardScrap;
+import com.commit.entity.JobScrap;
 import com.commit.entity.Members;
+import com.commit.entity.NewsComment;
+import com.commit.entity.NewsLike;
+import com.commit.entity.NewsScrap;
 import com.commit.model.MembersDto;
+import com.commit.repository.BoardLikeDao;
+import com.commit.repository.BoardScrapDao;
+import com.commit.repository.JobScrapDao;
 import com.commit.repository.MembersDao;
+import com.commit.repository.MypageBoardDao;
 import com.commit.repository.MypageDao;
+import com.commit.repository.NewsCommentDao;
+import com.commit.repository.NewsLikeDao;
+import com.commit.repository.NewsScrapDao;
 
 @Service
 public class MypageService {
+	// 채용 스크랩
+	@Autowired
+	private JobScrapDao jobScrapDao;
+
+	// 뉴스 스크랩
+	@Autowired
+	private NewsScrapDao newsScrapDao;
+	
+	// 보드 스크랩
+	@Autowired
+	private BoardScrapDao boardScrapDao;
+	
+	// 내가 쓴 글(커뮤니티)
+	@Autowired
+	private MypageBoardDao boardDao;
+	
+	// 내가 쓴 댓글(뉴스)
+	@Autowired
+	private NewsCommentDao newsCommentDao;
+	
+	// 좋아요
+	@Autowired
+	private NewsLikeDao newsLikeDao;
+
+	@Autowired
+	private BoardLikeDao boardLikeDao;
+
+	// 마이페이지 메인
 	@Autowired
 	private MypageDao mypageDao;
 	
@@ -83,5 +126,66 @@ public class MypageService {
 		return memberOut;
 	}
 
+	// 채용 스크랩
+	public List<JobScrap> getJobsByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<JobScrap> jobScrap = jobScrapDao.findByMembers_Id(membersId);
+		
+		return jobScrap;
+	}
 	
+	// 뉴스 스크랩
+	public List<NewsScrap> getNewsByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<NewsScrap> newsScrap = newsScrapDao.findByMembers_Id(membersId);
+		
+		return newsScrap;
+	}
+	
+	// 커뮤니티 스크랩
+	public List<BoardScrap> getBoardByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<BoardScrap> boardScrap = boardScrapDao.findByMembers_Id(membersId);
+		
+		return boardScrap;
+	}
+	
+	// 뉴스 좋아요
+	public List<NewsLike> getNewssByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<NewsLike> newsLike = newsLikeDao.findByMembers_Id(membersId);
+		
+		return newsLike;
+	}
+	
+	// 커뮤니티 좋아요
+	public List<BoardLike> getCommunityByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<BoardLike> boardLike = boardLikeDao.findByMembers_Id(membersId);
+		
+		return boardLike;
+	}
+	
+	// 내가 쓴 글(커뮤니티)
+	public List<Board> getContentByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<Board> boardContent = boardDao.findByMember_Id(membersId);
+		
+		return boardContent;
+	}
+	
+	// 내가 쓴 댓글(뉴스)
+	public List<NewsComment> getNewsCommentByMemberId(Integer membersId, String memberId){
+		Optional<Members> member = mypageDao.findByIdAndMemberId(membersId, memberId);
+		
+		List<NewsComment> newsComment = newsCommentDao.findByMember_Id(membersId);
+		
+		return newsComment;
+	}
 }
