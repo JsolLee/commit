@@ -10,6 +10,8 @@
 - 취업준비생, IT 업계 신입 및 이직을 염두하는 경력자, IT관련 지식을 다른 사람들과 나누고자 하는 사람
 ### 프로젝트 기간
 - 2023.09.12-.2024.01.10
+### FRONT-END  
+- https://github.com/JsolLee/commit_frontend
 ### 프로젝트 멤버
 |Name|GitHub Address|
 |------|---|
@@ -50,7 +52,6 @@
 - Github
 - Notion
 - Discord
-
 
 ## 4. 실행 화면
 <details>
@@ -152,9 +153,6 @@
    ![Report2](https://github.com/JsolLee/commit/assets/28701071/16f342c4-3bcf-47d1-bd3e-0ffa94f3f53b) 
   
 </details>
-
-
-## 6. 프로젝트를 마치며
 
 
 
